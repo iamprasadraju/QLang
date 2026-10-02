@@ -15,3 +15,10 @@ guarantees, and turn source code into execution.
 
 framework/index
 ```
+
+```{toctree}
+:maxdepth: 2
+:caption: Language Studies
+
+studies/index
+```
