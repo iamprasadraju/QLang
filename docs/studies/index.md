@@ -14,4 +14,5 @@ defies the map, ask what question the map failed to ask.
 :maxdepth: 2
 
 rust/index
+c/index
 ```
