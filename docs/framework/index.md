@@ -1,7 +1,7 @@
 # The QLang Framework
 
 A good question should satisfy most of these criteria. The sections below
-form the universal map: 11 categories, 19 sub-questions, and 159 checklist
+form the universal map: 11 categories, 19 sub-questions, and 159
 questions to ask of any programming language.
 
 Two worked studies apply the whole map end to end: {doc}`Rust <../studies/rust/index>`

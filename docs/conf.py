@@ -22,6 +22,5 @@ html_context = {
     "conf_py_path": "/docs/",
 }
 
-myst_enable_extensions = ["tasklist"]
 myst_heading_anchors = 3
 suppress_warnings = ["myst.header"]

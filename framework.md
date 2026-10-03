@@ -48,15 +48,15 @@ In simpler words:
 
 Questions:
 
-- [ ] What problem was it created to solve?
-- [ ] What existed before it?
-- [ ] What was considered insufficient?
-- [ ] What does it prioritize?
-- [ ] What does it sacrifice?
-- [ ] Who is it designed for?
-- [ ] What kinds of programs does it make natural?
-- [ ] What kinds of programs does it make difficult?
-- [ ] What languages or ideas influenced it?
+- What problem was it created to solve?
+- What existed before it?
+- What was considered insufficient?
+- What does it prioritize?
+- What does it sacrifice?
+- Who is it designed for?
+- What kinds of programs does it make natural?
+- What kinds of programs does it make difficult?
+- What languages or ideas influenced it?
 
 Covered topics:
 
@@ -90,15 +90,15 @@ In simpler words:
 
 Questions:
 
-- [ ] What kinds of things can programs represent?
-- [ ] What are the fundamental values?
-- [ ] How are values combined?
-- [ ] How are new kinds of values created?
-- [ ] Can values represent alternatives?
-- [ ] Can they represent absence?
-- [ ] Can they represent relationships?
-- [ ] What can the language express as data?
-- [ ] What cannot be expressed naturally?
+- What kinds of things can programs represent?
+- What are the fundamental values?
+- How are values combined?
+- How are new kinds of values created?
+- Can values represent alternatives?
+- Can they represent absence?
+- Can they represent relationships?
+- What can the language express as data?
+- What cannot be expressed naturally?
 
 Covered topics:
 
@@ -134,14 +134,14 @@ In simpler words:
 
 Questions:
 
-- [ ] What constructs does the language recognize?
-- [ ] How is syntax mapped to meaning?
-- [ ] What is the semantic model?
-- [ ] What does an expression mean?
-- [ ] What is a statement?
-- [ ] What does a declaration mean?
-- [ ] What does a program mean?
-- [ ] Is meaning defined by evaluation, transformation, proof, relation, effects, or something else?
+- What constructs does the language recognize?
+- How is syntax mapped to meaning?
+- What is the semantic model?
+- What does an expression mean?
+- What is a statement?
+- What does a declaration mean?
+- What does a program mean?
+- Is meaning defined by evaluation, transformation, proof, relation, effects, or something else?
 
 Covered topics:
 
@@ -171,16 +171,16 @@ In simpler words:
 
 Questions:
 
-- [ ] What can be named?
-- [ ] What does a name denote?
-- [ ] How are bindings created?
-- [ ] Where is a name visible?
-- [ ] How are names resolved?
-- [ ] Can two names refer to the same thing?
-- [ ] Can names be rebound?
-- [ ] Can names be captured?
-- [ ] What happens when scopes overlap?
-- [ ] Are there multiple namespaces?
+- What can be named?
+- What does a name denote?
+- How are bindings created?
+- Where is a name visible?
+- How are names resolved?
+- Can two names refer to the same thing?
+- Can names be rebound?
+- Can names be captured?
+- What happens when scopes overlap?
+- Are there multiple namespaces?
 
 Covered topics:
 
@@ -215,15 +215,15 @@ In simpler words:
 
 Questions:
 
-- [ ] What causes computation to happen?
-- [ ] What determines the next step?
-- [ ] In what order are things evaluated?
-- [ ] Can evaluation be delayed?
-- [ ] Can evaluation branch?
-- [ ] Can evaluation backtrack?
-- [ ] Can computation be recursive?
-- [ ] Can computation be suspended and resumed?
-- [ ] Is computation driven by control flow, rewriting, reduction, search, data dependencies, or something else?
+- What causes computation to happen?
+- What determines the next step?
+- In what order are things evaluated?
+- Can evaluation be delayed?
+- Can evaluation branch?
+- Can evaluation backtrack?
+- Can computation be recursive?
+- Can computation be suspended and resumed?
+- Is computation driven by control flow, rewriting, reduction, search, data dependencies, or something else?
 
 Covered topics:
 
@@ -254,14 +254,14 @@ In simpler words:
 
 Questions:
 
-- [ ] How do I define reusable behavior?
-- [ ] What is a function?
-- [ ] Is behavior a value?
-- [ ] Can behavior be passed around?
-- [ ] Can behavior be returned?
-- [ ] Can behavior capture context?
-- [ ] How is behavior combined with other behavior?
-- [ ] What are the basic units of composition?
+- How do I define reusable behavior?
+- What is a function?
+- Is behavior a value?
+- Can behavior be passed around?
+- Can behavior be returned?
+- Can behavior capture context?
+- How is behavior combined with other behavior?
+- What are the basic units of composition?
 
 Covered topics:
 
@@ -292,14 +292,14 @@ In simpler words:
 
 Questions:
 
-- [ ] How do I avoid repeating an idea?
-- [ ] How can an idea be generalized?
-- [ ] What can be parameterized?
-- [ ] What can be hidden?
-- [ ] What can be exposed?
-- [ ] What can depend on another abstraction?
-- [ ] How can abstractions be composed?
-- [ ] At what level can abstraction happen?
+- How do I avoid repeating an idea?
+- How can an idea be generalized?
+- What can be parameterized?
+- What can be hidden?
+- What can be exposed?
+- What can depend on another abstraction?
+- How can abstractions be composed?
+- At what level can abstraction happen?
 
 Covered topics:
 
@@ -335,15 +335,15 @@ In simpler words:
 
 Questions:
 
-- [ ] What is mutable?
-- [ ] What is immutable?
-- [ ] What is state?
-- [ ] Where does state live?
-- [ ] Who may change it?
-- [ ] Who observes the change?
-- [ ] Can change be isolated?
-- [ ] Can the compiler reason about change?
-- [ ] What happens when multiple computations change the same thing?
+- What is mutable?
+- What is immutable?
+- What is state?
+- Where does state live?
+- Who may change it?
+- Who observes the change?
+- Can change be isolated?
+- Can the compiler reason about change?
+- What happens when multiple computations change the same thing?
 
 Covered topics:
 
@@ -373,15 +373,15 @@ In simpler words:
 
 Questions:
 
-- [ ] When is something created?
-- [ ] Where does it live?
-- [ ] Who is responsible for it?
-- [ ] Who can access it?
-- [ ] When does it stop existing?
-- [ ] Can its lifetime be extended?
-- [ ] Can multiple things refer to it?
-- [ ] What happens when it becomes invalid?
-- [ ] Who releases its resources?
+- When is something created?
+- Where does it live?
+- Who is responsible for it?
+- Who can access it?
+- When does it stop existing?
+- Can its lifetime be extended?
+- Can multiple things refer to it?
+- What happens when it becomes invalid?
+- Who releases its resources?
 
 Covered topics:
 
@@ -416,14 +416,14 @@ In simpler words:
 
 Questions:
 
-- [ ] How is absence represented?
-- [ ] How does failure happen?
-- [ ] How does failure propagate?
-- [ ] How are exceptional situations represented?
-- [ ] Can computation have multiple possible outcomes?
-- [ ] Can it backtrack?
-- [ ] Can failure be recovered from?
-- [ ] Can the programmer be forced to handle failure?
+- How is absence represented?
+- How does failure happen?
+- How does failure propagate?
+- How are exceptional situations represented?
+- Can computation have multiple possible outcomes?
+- Can it backtrack?
+- Can failure be recovered from?
+- Can the programmer be forced to handle failure?
 
 Covered topics:
 
@@ -460,16 +460,16 @@ In simpler words:
 
 Questions:
 
-- [ ] How does it perform I/O?
-- [ ] How does it access files?
-- [ ] Networks?
-- [ ] Processes?
-- [ ] Hardware?
-- [ ] Time?
-- [ ] Randomness?
-- [ ] Operating-system functionality?
-- [ ] Foreign code?
-- [ ] External resources?
+- How does it perform I/O?
+- How does it access files?
+- Networks?
+- Processes?
+- Hardware?
+- Time?
+- Randomness?
+- Operating-system functionality?
+- Foreign code?
+- External resources?
 
 
 Covered topics:
@@ -502,15 +502,15 @@ In simpler words:
 
 Questions:
 
-- [ ] Can computations execute simultaneously?
-- [ ] What can they share?
-- [ ] How do they communicate?
-- [ ] How is shared state handled?
-- [ ] How is synchronization handled?
-- [ ] Can races occur?
-- [ ] Can the language detect or prevent them?
-- [ ] Who schedules execution?
-- [ ] How are distributed computations represented?
+- Can computations execute simultaneously?
+- What can they share?
+- How do they communicate?
+- How is shared state handled?
+- How is synchronization handled?
+- Can races occur?
+- Can the language detect or prevent them?
+- Who schedules execution?
+- How are distributed computations represented?
 
 Covered topics:
 
@@ -548,15 +548,15 @@ In simpler words:
 
 Questions:
 
-- [ ] What can be determined statically?
-- [ ] What must wait until runtime?
-- [ ] What can the compiler infer?
-- [ ] What can it reject?
-- [ ] What relationships can be expressed in the type system?
-- [ ] Can types depend on values?
-- [ ] Can the language express invariants?
-- [ ] Can programs be partially evaluated?
-- [ ] Can properties be proved?
+- What can be determined statically?
+- What must wait until runtime?
+- What can the compiler infer?
+- What can it reject?
+- What relationships can be expressed in the type system?
+- Can types depend on values?
+- Can the language express invariants?
+- Can programs be partially evaluated?
+- Can properties be proved?
 
 Covered topics:
 
@@ -592,14 +592,14 @@ In simpler words:
 
 Questions:
 
-- [ ] What errors are prevented?
-- [ ] What errors are detected?
-- [ ] What remains the programmer's responsibility?
-- [ ] What properties can be guaranteed?
-- [ ] What properties can only be tested?
-- [ ] What can the compiler prove?
-- [ ] What programs are impossible to express safely?
-- [ ] Where can the guarantees be bypassed?
+- What errors are prevented?
+- What errors are detected?
+- What remains the programmer's responsibility?
+- What properties can be guaranteed?
+- What properties can only be tested?
+- What can the compiler prove?
+- What programs are impossible to express safely?
+- Where can the guarantees be bypassed?
 
 Covered topics:
 
@@ -635,14 +635,14 @@ In simpler words:
 
 Questions:
 
-- [ ] Can code inspect code?
-- [ ] Can code generate code?
-- [ ] Can syntax be manipulated?
-- [ ] Can programs execute during compilation?
-- [ ] Can programs inspect types?
-- [ ] Can the language extend itself?
-- [ ] Can the programmer introduce new syntax?
-- [ ] Can proof or metadata about programs be represented?
+- Can code inspect code?
+- Can code generate code?
+- Can syntax be manipulated?
+- Can programs execute during compilation?
+- Can programs inspect types?
+- Can the language extend itself?
+- Can the programmer introduce new syntax?
+- Can proof or metadata about programs be represented?
 
 Covered topics:
 
@@ -677,14 +677,14 @@ In simpler words:
 
 Questions:
 
-- [ ] How are pieces of a program separated?
-- [ ] How are names shared?
-- [ ] How is visibility controlled?
-- [ ] How are dependencies represented?
-- [ ] How are interfaces defined?
-- [ ] How are libraries created?
-- [ ] How are versions handled?
-- [ ] How does a program grow without becoming unmanageable?
+- How are pieces of a program separated?
+- How are names shared?
+- How is visibility controlled?
+- How are dependencies represented?
+- How are interfaces defined?
+- How are libraries created?
+- How are versions handled?
+- How does a program grow without becoming unmanageable?
 
 Covered topics:
 
@@ -720,13 +720,13 @@ In simpler words:
 
 Questions:
 
-- [ ] How is source parsed?
-- [ ] How is meaning checked?
-- [ ] What is elaborated?
-- [ ] What is inferred?
-- [ ] What code is generated?
-- [ ] What is evaluated at compile time?
-- [ ] What gets erased?
+- How is source parsed?
+- How is meaning checked?
+- What is elaborated?
+- What is inferred?
+- What code is generated?
+- What is evaluated at compile time?
+- What gets erased?
 
 Covered topics:
 
@@ -767,12 +767,12 @@ In simpler words:
 
 Questions:
 
-- [ ] What does this language make easy?
-- [ ] What does it make awkward?
-- [ ] What does idiomatic code look like?
-- [ ] What abstractions naturally emerge?
-- [ ] What patterns fight the language?
-- [ ] What way of thinking does the language encourage?
+- What does this language make easy?
+- What does it make awkward?
+- What does idiomatic code look like?
+- What abstractions naturally emerge?
+- What patterns fight the language?
+- What way of thinking does the language encourage?
 
 Covered topics:
 
@@ -805,13 +805,13 @@ In simpler words:
 
 Questions:
 
-- [ ] What does this language do differently?
-- [ ] What problem does that difference solve?
-- [ ] Why is the ordinary solution insufficient?
-- [ ] What does this mechanism enable?
-- [ ] What does it cost?
-- [ ] What concepts depend on it?
-- [ ] What would be difficult without it?
+- What does this language do differently?
+- What problem does that difference solve?
+- Why is the ordinary solution insufficient?
+- What does this mechanism enable?
+- What does it cost?
+- What concepts depend on it?
+- What would be difficult without it?
 
 Covered topics:
 

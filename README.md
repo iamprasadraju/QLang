@@ -16,7 +16,7 @@ QLang is about finding the questions behind those answers.
 
 | Path | What it is |
 |---|---|
-| [`framework.md`](framework.md) | The universal map: 11 sections, 19 sub-questions, 159 checklist questions, plus the learning loop and self-correction rule. Single source of truth. |
+| [`framework.md`](framework.md) | The universal map: 11 sections, 19 sub-questions, 159 questions, plus the learning loop and self-correction rule. Single source of truth. |
 | [`docs/`](docs/) | Sphinx site source. The framework pages include their section straight from `framework.md`; [`.readthedocs.yaml`](.readthedocs.yaml) prepares it for Read the Docs. |
 | [`docs/studies/rust/`](docs/studies/rust/) | Complete study: all 159 questions answered for Rust. |
 | [`docs/studies/c/`](docs/studies/c/) | Complete study: all 159 questions answered for C. |
