@@ -13,20 +13,29 @@ then tokenization and parsing into a syntax tree. The preprocessor output is a
 different program from the one you wrote, and the parser never sees the
 original lines.
 
+```c
+int x = 1 \
+    + 2;
+const char *g = "hello, " \
+                "world";
+```
+
 ```console
 $ clang -E phase.c | grep -v '^#' | grep -v '^$'
 int x = 1 + 2;
 const char *g = "hello, " "world";
 $ clang -Xclang -dump-tokens -fsyntax-only phase.c 2>&1 | grep -E "plus|'2'|string_literal"
-plus '+'	 [LeadingSpace] Loc=<phase.c:2:11>
-numeric_constant '2'	 [LeadingSpace] Loc=<phase.c:3:9>
-string_literal '"hello, "'	 [LeadingSpace] Loc=<phase.c:4:17 <Spelling=phase.c:1:20>>
-string_literal '"world"'	 [LeadingSpace] Loc=<phase.c:4:17 <Spelling=<scratch space>:4:1>>
+plus '+'	 [LeadingSpace]	Loc=<phase.c:2:5>
+numeric_constant '2'	 [LeadingSpace]	Loc=<phase.c:2:7>
+string_literal '"hello, "'	 [LeadingSpace]	Loc=<phase.c:3:17>
+string_literal '"world"'	 [LeadingSpace]	Loc=<phase.c:4:17>
 ```
 
-Note the spellings: the `2` came from line 3 (the continuation), and
-`"world"` came from scratch space — the token's true origin is no longer the
-place the parser will report.
+Note the locations: the preprocessor printed each statement as a single line,
+yet the tokens still carry their positions in the physical file — `+` and `2`
+on line 2 (the splice continuation), the strings on lines 3 and 4.
+Diagnostics will point at `phase.c`, even though the program the parser
+received has been reflowed onto different lines.
 
 ### How is meaning checked?
 
@@ -127,6 +136,12 @@ inlined or discarded, and — unless `-g` was passed — essentially all type
 information. What remains in the binary is addresses, instructions, and
 strings.
 
+```c
+typedef unsigned long ulong_t;
+static int helper(int x) { return x + 1; }
+int main(void) { return helper(0); }
+```
+
 ```console
 $ clang -O0 -S erase.c -o erase0.s && grep -c helper erase0.s
 3
@@ -136,6 +151,6 @@ $ grep -cE 'typedef|restrict|const' erase2.s
 0
 ```
 
-At `-O0` the unused `helper` is emitted as a real symbol; at `-O2` it is
+At `-O0` the `helper` function is emitted as a real symbol; at `-O2` it is
 inlined into its only caller and the symbol disappears entirely, along with
 every trace of the source-level qualifiers.

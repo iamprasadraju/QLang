@@ -75,8 +75,8 @@ are platform APIs (`clock_gettime(CLOCK_MONOTONIC)`, `QueryPerformanceCounter`).
 ### Randomness?
 
 `rand()`/`srand()` — deterministic, often a weak PRNG, and explicitly not for
-security — plus Annex K's `rand_s` where the implementation provides it.
-Serious randomness requires the OS (`/dev/urandom`, `getrandom`,
+security — plus Microsoft's `rand_s` on Windows (an extension, absent from
+ISO C). Serious randomness requires the OS (`/dev/urandom`, `getrandom`,
 `BCryptGenRandom`) or a hardware intrinsic such as `_rdrand64_step`.
 
 ### Operating-system functionality?
@@ -162,22 +162,42 @@ about diagnosing it, so no warning and no runtime check appears by default —
 the standard's answer to a race is "the program has no defined behavior".
 Tooling, not the language, catches it:
 
+```c
+#include <pthread.h>
+#include <stdio.h>
+#define N 100000
+static int counter;
+static void *work(void *arg) {
+    for (int i = 0; i < N; i++) counter++;
+    return NULL;
+}
+int main(void) {
+    pthread_t t;
+    pthread_create(&t, NULL, work, NULL);
+    for (int i = 0; i < N; i++) counter++;
+    pthread_join(t, NULL);
+    printf("%d\n", counter);
+    return 0;
+}
+```
+
 ```console
-$ clang -fsanitize=thread -O1 race.c -o race_tsan -lpthread && ./race_tsan
+$ clang -fsanitize=thread -O1 race.c -o race_tsan && ./race_tsan
 ==================
-WARNING: ThreadSanitizer: data race (pid=12304)
-  Write of size 4 at 0x000104604000 by main thread:
+WARNING: ThreadSanitizer: data race (pid=20104)
+  Write of size 4 at 0x000102404000 by thread T1:
+    #0 work <null> (race_tsan:arm64+0x100000714)
+
+  Previous write of size 4 at 0x000102404000 by main thread:
     #0 main <null> (race_tsan:arm64+0x100000698)
 
-  Previous write of size 4 at 0x000104604000 by thread T1:
-    #0 work <null> (race_tsan:arm64+0x10000071c)
+  Location is global 'counter' at 0x000102404000 (race_tsan+0x100008000)
 
-  Location is global 'counter' at 0x000104604000 (race_tsan+0x100008000)
-  Thread T1 (tid=611626, finished) created by main thread at:
+  Thread T1 (tid=814357, running) created by main thread at:
     #0 pthread_create <null> (libclang_rt.tsan_osx_dynamic.dylib:arm64e+0x32b00)
     #1 main <null> (race_tsan:arm64+0x10000067c)
 
-SUMMARY: ThreadSanitizer: data race (race_tsan:arm64+0x100000698) in main+0x48
+SUMMARY: ThreadSanitizer: data race (race_tsan:arm64+0x100000714) in work+0x2c
 ==================
 100000
 ThreadSanitizer: reported 1 warnings

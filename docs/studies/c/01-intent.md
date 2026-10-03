@@ -16,7 +16,7 @@ hardware.
 
 ### What existed before it?
 
-UNIX was first written in PDP-11 assembly; then came BCPL (Martin Richards,
+UNIX was first written in PDP-7 assembly; then came BCPL (Martin Richards,
 1967), which Thompson stripped down into B for the PDP-7 and later PDP-11.
 B was a typeless language in which every value was one machine word and arrays
 were indexed in words rather than bytes.

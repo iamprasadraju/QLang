@@ -49,29 +49,34 @@ correctness into convention:
 
 ```c
 #include <string.h>
-void receive(char *dst) {
+void copy(char *dst) {
     strcpy(dst, "input that does not fit in the destination at all");
     /* the type carries no length: nothing here can be checked, before or after */
+}
+int main(void) {
+    char buf[8];
+    copy(buf);
+    return 0;
 }
 ```
 
 ```console
 $ clang -fsanitize=address -g asan.c -o asan_demo && ./asan_demo
 =================================================================
-==11220==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x00016bb1ee88 at pc 0x000104be7298 bp 0x00016bb1ee50 sp 0x00016bb1e600
-WRITE of size 35 at 0x00016bb1ee88 thread T0
-    #0 0x000104be7294 in strcpy+0x448 (libclang_rt.asan_osx_dynamic.dylib:arm64e+0x37294)
-    #1 0x0001042e08f4 in copy asan.c:4
-    #2 0x0001042e09ac in main asan.c:6
+==20310==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x00016dbcee88 at pc 0x000102ba3298 bp 0x00016dbcee30 sp 0x00016dbce5e0
+WRITE of size 50 at 0x00016dbcee88 thread T0
+    #0 0x000102ba3294 in strcpy+0x448 (libclang_rt.asan_osx_dynamic.dylib:arm64e+0x37294)
+    #1 0x0001022307fc in copy asan.c:3
+    #2 0x00010223091c in main asan.c:8
     #3 0x00019843ab94  (<unknown module>)
 
-Address 0x00016bb1ee88 is located in stack of thread T0 at offset 40 in frame
-    #0 0x0001042e07ec in copy asan.c:2
+Address 0x00016dbcee88 is located in stack of thread T0 at offset 40 in frame
+    #0 0x000102230818 in main asan.c:6
 
   This frame has 1 object(s):
-    [32, 40) 'buf' (line 3) <== Memory access at offset 40 overflows this variable
+    [32, 40) 'buf' (line 7) <== Memory access at offset 40 overflows this variable
 ...
-SUMMARY: AddressSanitizer: stack-buffer-overflow asan.c:4 in copy
+SUMMARY: AddressSanitizer: stack-buffer-overflow asan.c:3 in copy
 ```
 
 In an ordinary build the same program does not report anything — it corrupts

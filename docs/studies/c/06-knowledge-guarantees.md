@@ -41,10 +41,21 @@ undecl.c:1:25: error: call to undeclared function 'helper'; ISO C99 and later do
 1 error generated.
 ```
 
+```c
+#include <stdio.h>
+void handle(int *p);
+
+void demo(double *d) {
+    int unused = 3;
+    handle(d);
+    printf("value: %s\n", 42);
+}
+```
+
 ```console
 $ clang -Wall -c warn2.c
-warn2.c:5:12: warning: incompatible pointer types passing 'double *' to parameter of type 'int *' [-Wincompatible-pointer-types]
-    5 |     handle(d);
+warn2.c:6:12: warning: incompatible pointer types passing 'double *' to parameter of type 'int *' [-Wincompatible-pointer-types]
+    6 |     handle(d);
       |            ^
 warn2.c:2:18: note: passing argument to parameter 'p' here
     2 | void handle(int *p);
@@ -53,15 +64,15 @@ warn2.c:7:27: warning: format specifies type 'char *' but the argument has type 
     7 |     printf("value: %s\n", 42);
       |                    ~~     ^~
       |                    %d
-warn2.c:4:9: warning: unused variable 'unused' [-Wunused-variable]
-    4 |     int unused = 3;
-      |         ^~~~~
+warn2.c:5:9: warning: unused variable 'unused' [-Wunused-variable]
+    5 |     int unused = 3;
+      |         ^~~~~~
 3 warnings generated.
 ```
 
-Notice the second block: only the argument-count error is a hard error by
-default. Wrong types and wrong format specifiers are *warnings* that a build
-without `-Werror` will happily ship.
+Notice the split: the undeclared call above is a hard error even without
+`-Wall`, while wrong types and wrong format specifiers are only *warnings* —
+a build without `-Werror` will happily ship them.
 
 ### What relationships can be expressed in the type system?
 
@@ -173,6 +184,16 @@ _Static_assert(sizeof(long) >= 4, "long is 4 bytes on some ABIs, 8 on others");
 Everything about run-time behavior: absence of leaks, absence of races,
 absence of overflows, termination, performance, and correct output. The
 language supplies no property to state and no checker to run it.
+
+```c
+#include <stdio.h>
+int main(void) {
+    int x = 2147483647;
+    x = x + 1;
+    printf("%d\n", x);
+    return 0;
+}
+```
 
 ```console
 $ clang -O2 -fsanitize=undefined signed.c -o sg && ./sg

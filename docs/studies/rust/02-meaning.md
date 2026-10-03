@@ -95,7 +95,7 @@ let nothing = { sum; };   // `;` discards 5; block's value is ()
 
 ### What is a statement?
 
-`let` bindings, expression statements terminated by `;`, and item declarations inside blocks. Statements produce no value of their own, which is why `let x = if c { 1 } else { 2 };` works but `let x = if c { 1 } else { 2 };` written as two statements would require the `if` to be balanced as an expression.
+`let` bindings, expression statements terminated by `;`, and item declarations inside blocks. Statements produce no value of their own, which is why `let x = if c { 1 } else { 2 };` works as a single binding, while splitting it into `let x;` and a separate `if` statement requires every branch to assign `x` before it can be read.
 
 ### What does a declaration mean?
 

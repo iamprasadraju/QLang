@@ -93,6 +93,12 @@ Compile objects, then either archive them into a static library
 headers as the interface. Linkers pull in static archives member by member and
 record shared libraries as runtime dependencies.
 
+```c
+/* main.c */
+#include "util.h"
+int main(void) { helper(); return shared_counter; }
+```
+
 ```console
 $ clang -O2 -c util.c
 $ ar rcs libutil.a util.o
@@ -103,10 +109,10 @@ app:
 $ nm libutil.a | head -3
 
 util.o:
-0000000000000000 T _util_add
+0000000000000000 T _helper
 ```
 
-The archive's `util_add` is copied into `app` at link time (only the platform
+The archive's `helper` is copied into `app` at link time (only the platform
 runtime remains a dynamic dependency), which is the difference between static
 and dynamic linking made visible with one command.
 

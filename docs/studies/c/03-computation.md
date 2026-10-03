@@ -86,9 +86,9 @@ int main(void) { int i = 0; i = i++ + 1; return i; }
 
 ```console
 $ clang -Wall -c uns.c
-uns.c:1:30: warning: multiple unsequenced modifications to 'i' [-Wunsequenced]
-    1 | int main(void){int i=0; i = i++ + 1; return i;}
-      |                           ~  ^
+uns.c:1:34: warning: multiple unsequenced modifications to 'i' [-Wunsequenced]
+    1 | int main(void) { int i = 0; i = i++ + 1; return i; }
+      |                               ~  ^
 1 warning generated.
 ```
 
