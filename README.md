@@ -34,14 +34,38 @@ Two worked studies exist as proof of concept: [Rust](docs/studies/rust/index.md)
 
 ## Building the documentation site
 
+### 1. Setup (once)
+
+Requires Python 3.12+ (3.12 is what CI uses).
+
 ```sh
+git clone https://github.com/iamprasadraju/QLang.git
+cd QLang
 python3 -m venv .venv
 .venv/bin/pip install -r docs/requirements.txt
-.venv/bin/sphinx-build -W docs docs/_build
-# open docs/_build/index.html
 ```
 
-`-W` treats warnings as errors; the build is expected to be warning-free. The same strict build runs in CI and deploys the result to GitHub Pages: **https://iamprasadraju.github.io/QLang/** (`.readthedocs.yaml` keeps an equivalent Read the Docs setup ready as a fallback).
+### 2. Build
+
+```sh
+.venv/bin/sphinx-build -W docs docs/_build
+```
+
+`-W` treats warnings as errors; the build is expected to be warning-free.
+The framework pages include their sections straight from `framework.md`,
+so editing `framework.md` is enough - rerun the build to see changes.
+
+### 3. View locally
+
+```sh
+python3 -m http.server 8000 --directory docs/_build
+# open http://localhost:8000
+```
+
+A plain file-open works too, but the search box needs the local server
+(browsers block `searchindex.js` over `file://`).
+
+The same strict build runs in CI and deploys the result to GitHub Pages: **https://iamprasadraju.github.io/QLang/** (`.readthedocs.yaml` keeps an equivalent Read the Docs setup ready as a fallback).
 
 ## Contributing
 
