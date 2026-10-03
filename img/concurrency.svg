@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="320" viewBox="0 0 960 320" role="img" aria-labelledby="t">
+  <title id="t">Two threads coordinating through shared memory and through a message channel</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#1a1a2e"/>
+    </marker>
+  </defs>
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">
+    <rect x="40" y="55" width="220" height="70" rx="8" fill="#ffffff" stroke="#1a1a2e" stroke-width="1.5"/>
+    <text x="150" y="85" fill="#1a1a2e" font-size="14" font-weight="600">Thread 1</text>
+    <text x="150" y="107" fill="#555" font-size="11">async task</text>
+
+    <rect x="40" y="215" width="220" height="70" rx="8" fill="#ffffff" stroke="#1a1a2e" stroke-width="1.5"/>
+    <text x="150" y="245" fill="#1a1a2e" font-size="14" font-weight="600">Thread 2</text>
+    <text x="150" y="267" fill="#555" font-size="11">async task</text>
+
+    <rect x="370" y="135" width="220" height="70" rx="8" fill="#fdf1de" stroke="#e8a13a" stroke-width="1.5"/>
+    <text x="480" y="165" fill="#1a1a2e" font-size="14" font-weight="600">Shared memory</text>
+    <text x="480" y="187" fill="#555" font-size="11">mutable state</text>
+
+    <rect x="700" y="135" width="230" height="70" rx="8" fill="#ffffff" stroke="#1a1a2e" stroke-width="1.5"/>
+    <text x="815" y="165" fill="#1a1a2e" font-size="14" font-weight="600">Channel</text>
+    <text x="815" y="187" fill="#555" font-size="11">message queue</text>
+
+    <g stroke="#1a1a2e" stroke-width="1.5" fill="none" marker-end="url(#a)">
+      <line x1="260" y1="90" x2="366" y2="148"/>
+      <line x1="260" y1="240" x2="366" y2="195"/>
+      <path d="M260 62 C 480 15, 620 30, 745 131"/>
+      <path d="M745 209 C 620 300, 480 305, 264 252"/>
+    </g>
+
+    <g fill="#8a6d3b" font-size="11">
+      <text x="316" y="118">read / write</text>
+      <text x="316" y="221">read / write</text>
+      <text x="538" y="64">send()</text>
+      <text x="538" y="270">recv()</text>
+    </g>
+
+    <text x="480" y="308" fill="#555" font-size="11.5">Two coordination styles: share memory and synchronise it, or pass messages and share nothing.</text>
+  </g>
+</svg>

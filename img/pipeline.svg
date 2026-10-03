@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1030" height="165" viewBox="0 0 1030 165" role="img" aria-labelledby="t">
+  <title id="t">Compilation pipeline: source to tokens to AST to IR to optimized IR to machine code</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#1a1a2e"/>
+    </marker>
+  </defs>
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">
+    <g fill="#ffffff" stroke="#1a1a2e" stroke-width="1.5">
+      <rect x="10" y="38" width="130" height="68" rx="8"/>
+      <rect x="185" y="38" width="130" height="68" rx="8"/>
+      <rect x="360" y="38" width="130" height="68" rx="8"/>
+      <rect x="535" y="38" width="130" height="68" rx="8"/>
+      <rect x="710" y="38" width="130" height="68" rx="8"/>
+      <rect x="885" y="38" width="130" height="68" rx="8"/>
+    </g>
+    <g fill="#1a1a2e" font-size="14" font-weight="600">
+      <text x="75" y="68">Source</text>
+      <text x="250" y="68">Tokens</text>
+      <text x="425" y="68">AST</text>
+      <text x="600" y="68">IR</text>
+      <text x="775" y="68">Optimized IR</text>
+      <text x="950" y="68">Machine code</text>
+    </g>
+    <g fill="#555" font-size="11">
+      <text x="75" y="90">hello.c</text>
+      <text x="250" y="90">after lexing</text>
+      <text x="425" y="90">after parsing</text>
+      <text x="600" y="90">after lowering</text>
+      <text x="775" y="90">after rewriting</text>
+      <text x="950" y="90">hello.o</text>
+    </g>
+    <g stroke="#1a1a2e" stroke-width="1.5" fill="none" marker-end="url(#a)">
+      <line x1="142" y1="72" x2="177" y2="72"/>
+      <line x1="317" y1="72" x2="352" y2="72"/>
+      <line x1="492" y1="72" x2="527" y2="72"/>
+      <line x1="667" y1="72" x2="702" y2="72"/>
+      <line x1="842" y1="72" x2="877" y2="72"/>
+    </g>
+    <text x="515" y="145" fill="#555" font-size="11.5">One front end per language, one back end per machine: the shared IR turns an N&#215;M problem into N+M.</text>
+  </g>
+</svg>

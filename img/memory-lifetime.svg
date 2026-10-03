@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="330" viewBox="0 0 960 330" role="img" aria-labelledby="t">
+  <title id="t">Stack frames versus heap blocks, with owner and borrow relationships</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#1a1a2e"/>
+    </marker>
+  </defs>
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+    <rect x="30" y="40" width="390" height="240" fill="#f7f7f7" stroke="#1a1a2e" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <rect x="520" y="40" width="410" height="240" fill="#f7f7f7" stroke="#1a1a2e" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <text x="48" y="66" fill="#8a6d3b" font-size="11" font-weight="700" letter-spacing="1">STACK - FRAMES</text>
+    <text x="538" y="66" fill="#8a6d3b" font-size="11" font-weight="700" letter-spacing="1">HEAP - OBJECTS</text>
+
+    <rect x="50" y="78" width="350" height="34" fill="#eef1f4"/>
+    <text x="64" y="100" fill="#1a1a2e" font-size="13" font-weight="600">frame: main()</text>
+    <rect x="50" y="112" width="350" height="40" fill="#ffffff" stroke="#1a1a2e" stroke-width="1"/>
+    <text x="64" y="137" fill="#1a1a2e" font-size="12.5">p - owner of block A</text>
+
+    <rect x="50" y="168" width="350" height="34" fill="#eef1f4"/>
+    <text x="64" y="190" fill="#1a1a2e" font-size="13" font-weight="600">frame: f()</text>
+    <rect x="50" y="202" width="350" height="40" fill="#ffffff" stroke="#1a1a2e" stroke-width="1"/>
+    <text x="64" y="227" fill="#1a1a2e" font-size="12.5">r - borrows from p</text>
+
+    <line x1="41" y1="120" x2="41" y2="258" stroke="#1a1a2e" stroke-width="1.5" marker-end="url(#a)"/>
+    <text x="24" y="190" fill="#555" font-size="10.5" text-anchor="middle" transform="rotate(-90 24 190)">grows</text>
+
+    <rect x="545" y="85" width="220" height="90" fill="#fdf1de" stroke="#e8a13a" stroke-width="1.5"/>
+    <text x="655" y="112" fill="#1a1a2e" font-size="13" font-weight="600" text-anchor="middle">block A</text>
+    <text x="655" y="134" fill="#1a1a2e" font-size="12" text-anchor="middle">String &#8220;hi&#8221;</text>
+    <text x="655" y="156" fill="#8a6d3b" font-size="11" text-anchor="middle">owner: p</text>
+
+    <rect x="545" y="195" width="220" height="62" fill="#ffffff" stroke="#1a1a2e" stroke-width="1" stroke-dasharray="4 3"/>
+    <text x="655" y="222" fill="#1a1a2e" font-size="13" font-weight="600" text-anchor="middle">block B</text>
+    <text x="655" y="243" fill="#555" font-size="11" text-anchor="middle">dropped when its owner dies</text>
+
+    <line x1="402" y1="132" x2="541" y2="125" stroke="#1a1a2e" stroke-width="1.5" marker-end="url(#a)"/>
+    <text x="470" y="118" fill="#1a1a2e" font-size="11" text-anchor="middle">owns</text>
+
+    <path d="M402 222 C 470 222, 480 168, 541 165" fill="none" stroke="#1a1a2e" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#a)"/>
+    <text x="468" y="205" fill="#1a1a2e" font-size="11" text-anchor="middle">borrows</text>
+
+    <text x="480" y="310" fill="#555" font-size="11.5" text-anchor="middle">When main() returns, the owner dies - block A is dropped and every borrow into it becomes invalid.</text>
+  </g>
+</svg>

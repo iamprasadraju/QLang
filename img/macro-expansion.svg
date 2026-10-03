@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="210" viewBox="0 0 980 210" role="img" aria-labelledby="t">
+  <title id="t">Macro expansion between parsing and the rest of the compilation pipeline</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#1a1a2e"/>
+    </marker>
+  </defs>
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">
+    <rect x="20" y="45" width="250" height="110" rx="8" fill="#ffffff" stroke="#1a1a2e" stroke-width="1.5"/>
+    <text x="145" y="75" fill="#1a1a2e" font-size="13" font-weight="600">Source + macro defs</text>
+    <text x="145" y="105" fill="#555" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">macro swap(a, b) { ... }</text>
+    <text x="145" y="130" fill="#555" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">swap(x, y)</text>
+
+    <rect x="316" y="45" width="200" height="110" rx="8" fill="#fdf1de" stroke="#e8a13a" stroke-width="1.5"/>
+    <text x="416" y="85" fill="#1a1a2e" font-size="13" font-weight="600">Macro expander</text>
+    <text x="416" y="110" fill="#555" font-size="11.5">rewrites the tree</text>
+    <text x="416" y="132" fill="#8a6d3b" font-size="11">hygiene rules apply</text>
+
+    <rect x="562" y="45" width="200" height="110" rx="8" fill="#ffffff" stroke="#1a1a2e" stroke-width="1.5"/>
+    <text x="662" y="85" fill="#1a1a2e" font-size="13" font-weight="600">Expanded AST</text>
+    <text x="662" y="110" fill="#555" font-size="11.5">no macros remain</text>
+    <text x="662" y="132" fill="#555" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">t = x; x = y; t = y</text>
+
+    <rect x="808" y="45" width="150" height="110" rx="8" fill="#f7f7f7" stroke="#1a1a2e" stroke-width="1.5"/>
+    <text x="883" y="95" fill="#1a1a2e" font-size="12.5" font-weight="600">rest of the</text>
+    <text x="883" y="115" fill="#1a1a2e" font-size="12.5" font-weight="600">pipeline</text>
+    <text x="883" y="138" fill="#555" font-size="10.5">check, optimize, emit</text>
+
+    <g stroke="#1a1a2e" stroke-width="1.5" fill="none" marker-end="url(#a)">
+      <line x1="270" y1="100" x2="310" y2="100"/>
+      <line x1="516" y1="100" x2="558" y2="100"/>
+      <line x1="762" y1="100" x2="802" y2="100"/>
+    </g>
+    <g fill="#8a6d3b" font-size="10.5">
+      <text x="290" y="88">parse</text>
+      <text x="537" y="88">expand</text>
+      <text x="782" y="88">continue</text>
+    </g>
+
+    <text x="490" y="188" fill="#555" font-size="11.5">Macros run between parsing and analysis: the compiler consumes the expanded tree, never the macro source.</text>
+  </g>
+</svg>

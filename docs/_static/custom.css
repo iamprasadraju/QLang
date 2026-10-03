@@ -1,0 +1,36 @@
+/* Collapsible Covered-topic boxes (framework.md glossary entries) */
+details {
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  padding: 0.45em 0.9em;
+  margin: 0.55em 0;
+}
+
+details + details {
+  margin-top: 0.4em;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+summary:focus-visible {
+  outline: 2px solid #e8a13a;
+  outline-offset: 2px;
+}
+
+details[open] {
+  padding-bottom: 0.75em;
+}
+
+details p {
+  margin-bottom: 0.35em;
+}
+
+/* Diagrams scale with the content column */
+img {
+  max-width: 100%;
+  height: auto;
+}

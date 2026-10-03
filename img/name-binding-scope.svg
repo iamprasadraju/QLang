@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="300" viewBox="0 0 940 300" role="img" aria-labelledby="t">
+  <title id="t">Nested scopes, shadowing, and how each name resolves to a binding</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#1a1a2e"/>
+    </marker>
+  </defs>
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+    <rect x="30" y="30" width="430" height="240" fill="#f7f7f7" stroke="#1a1a2e" stroke-width="1.5"/>
+    <text x="46" y="52" fill="#8a6d3b" font-size="10.5" font-weight="700" letter-spacing="1">GLOBAL</text>
+    <text x="46" y="74" fill="#1a1a2e" font-size="12.5">x = 1 &#8594; binding B1</text>
+
+    <rect x="55" y="86" width="380" height="164" fill="#ffffff" stroke="#1a1a2e" stroke-width="1.5"/>
+    <text x="71" y="108" fill="#8a6d3b" font-size="10.5" font-weight="700" letter-spacing="1">FUNCTION f()</text>
+    <text x="71" y="130" fill="#1a1a2e" font-size="12.5">x = 2 &#8594; binding B2 &#8195;shadows B1</text>
+
+    <rect x="80" y="142" width="330" height="92" fill="#fdf1de" stroke="#e8a13a" stroke-width="1.5"/>
+    <text x="96" y="164" fill="#8a6d3b" font-size="10.5" font-weight="700" letter-spacing="1">BLOCK</text>
+    <text x="96" y="186" fill="#1a1a2e" font-size="12.5">tmp = 3 &#8594; binding B3</text>
+    <text x="96" y="216" fill="#555" font-size="11">innermost binding wins</text>
+
+    <line x1="17" y1="216" x2="17" y2="46" stroke="#1a1a2e" stroke-width="1.5" marker-end="url(#a)"/>
+    <text x="8" y="131" fill="#555" font-size="10.5" text-anchor="middle" transform="rotate(-90 8 131)">name lookup walks outward</text>
+
+    <g font-size="12">
+      <rect x="510" y="46" width="400" height="36" fill="#1a1a2e"/>
+      <text x="526" y="69" fill="#ffffff" font-weight="600">name</text>
+      <text x="630" y="69" fill="#ffffff" font-weight="600">binding</text>
+      <text x="770" y="69" fill="#ffffff" font-weight="600">status</text>
+
+      <rect x="510" y="82" width="400" height="40" fill="#ffffff" stroke="#d8d8d8"/>
+      <text x="526" y="107" fill="#1a1a2e">x</text>
+      <text x="630" y="107" fill="#1a1a2e">B1 @ global</text>
+      <text x="770" y="107" fill="#888">shadowed</text>
+
+      <rect x="510" y="122" width="400" height="40" fill="#fafafa" stroke="#d8d8d8"/>
+      <text x="526" y="147" fill="#1a1a2e">x</text>
+      <text x="630" y="147" fill="#1a1a2e">B2 in f</text>
+      <text x="770" y="147" fill="#1a1a2e">active in f</text>
+
+      <rect x="510" y="162" width="400" height="40" fill="#ffffff" stroke="#d8d8d8"/>
+      <text x="526" y="187" fill="#1a1a2e">tmp</text>
+      <text x="630" y="187" fill="#1a1a2e">B3 in block</text>
+      <text x="770" y="187" fill="#1a1a2e">active in block</text>
+    </g>
+    <text x="710" y="246" fill="#555" font-size="11.5" text-anchor="middle">One name, many bindings: scope decides which binding a use refers to.</text>
+    <text x="710" y="266" fill="#555" font-size="11.5" text-anchor="middle">Shadowing is rebinding, not mutation.</text>
+  </g>
+</svg>
