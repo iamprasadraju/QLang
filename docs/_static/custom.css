@@ -2,31 +2,55 @@
 details {
   border: 1px solid #d0d7de;
   border-radius: 6px;
-  padding: 0.45em 0.9em;
-  margin: 0.55em 0;
-}
-
-details + details {
-  margin-top: 0.4em;
+  margin: 0.6em 0;
 }
 
 summary {
+  display: flex;
+  align-items: center;
+  gap: 0.55em;
+  padding: 0.5em 0.8em;
   cursor: pointer;
   font-weight: 600;
   color: #1a1a2e;
+  border-radius: 5px;
+  transition: background-color 0.12s ease;
+}
+
+summary:hover {
+  background-color: #f4f6f8;
 }
 
 summary:focus-visible {
-  outline: 2px solid #e8a13a;
-  outline-offset: 2px;
+  outline: 2px solid #b07514;
+  outline-offset: -2px;
 }
 
-details[open] {
-  padding-bottom: 0.75em;
+/* Custom chevron replaces the browser's default triangle */
+summary::before {
+  content: "";
+  flex: none;
+  width: 0.5em;
+  height: 0.5em;
+  border-right: 2px solid #b07514;
+  border-bottom: 2px solid #b07514;
+  transform: rotate(-45deg);
+  transition: transform 0.15s ease;
 }
 
-details p {
-  margin-bottom: 0.35em;
+details[open] > summary::before {
+  transform: rotate(45deg);
+}
+
+details[open] > summary {
+  background-color: #f7f8fa;
+  border-bottom: 1px solid #e4e7ea;
+  border-radius: 5px 5px 0 0;
+}
+
+details > *:not(summary) {
+  margin: 0;
+  padding: 0.7em 1em 0.85em 1.85em;
 }
 
 /* Diagrams scale with the content column */
