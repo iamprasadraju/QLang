@@ -17,7 +17,7 @@ QLang is about finding the questions behind those answers.
 | Path | What it is |
 |---|---|
 | [`framework.md`](framework.md) | The universal map: 11 sections, 19 sub-questions, 159 questions, plus the learning loop and self-correction rule. Single source of truth. |
-| [`docs/`](docs/) | Sphinx site source. The framework pages include their section straight from `framework.md`; [`.readthedocs.yaml`](.readthedocs.yaml) prepares it for Read the Docs. |
+| [`docs/`](docs/) | Sphinx site source. The framework pages include their section straight from `framework.md`; [`.github/workflows/deploy-docs.yml`](.github/workflows/deploy-docs.yml) builds it and deploys to GitHub Pages, and [`.readthedocs.yaml`](.readthedocs.yaml) keeps an equivalent Read the Docs setup ready. |
 | [`docs/studies/rust/`](docs/studies/rust/) | Complete study: all 159 questions answered for Rust. |
 | [`docs/studies/c/`](docs/studies/c/) | Complete study: all 159 questions answered for C. |
 | [`LICENSE`](LICENSE) | CC-BY-4.0. |
@@ -41,7 +41,7 @@ python3 -m venv .venv
 # open docs/_build/index.html
 ```
 
-`-W` treats warnings as errors; the build is expected to be warning-free. `.readthedocs.yaml` applies the same `-W` strictness once the project is imported into Read the Docs.
+`-W` treats warnings as errors; the build is expected to be warning-free. The same strict build runs in CI and deploys the result to GitHub Pages: **https://iamprasadraju.github.io/QLang/** (`.readthedocs.yaml` keeps an equivalent Read the Docs setup ready as a fallback).
 
 ## Contributing
 
