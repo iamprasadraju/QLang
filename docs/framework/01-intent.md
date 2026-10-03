@@ -2,6 +2,6 @@
 
 ```{include} ../../framework.md
 :start-after: I. INTENT
-:end-before: II. MEANING
+:end-before: <!-- end:intent -->
 :parser: myst_parser.sphinx_
 ```

@@ -1,4 +1,4 @@
-# QLang Framework V0.1
+# The QLang Framework
 
 A good question should satisfy most of these:
 
@@ -16,25 +16,35 @@ Avoid questions that already assume a particular mechanism.
 
 **Bad:**
 
-- [✗] Does the language have classes?
-- [✗] Does it have garbage collection?
-- [✗] Does it have ownership?
-- [✗] Does it have async/await?
-- [✗] Is it statically typed?
+- ✗ Does the language have classes?
+- ✗ Does it have garbage collection?
+- ✗ Does it have ownership?
+- ✗ Does it have async/await?
+- ✗ Is it statically typed?
 
 **Better:**
 
 
-- [✓] How are abstractions represented?
-- [✓] How is the lifetime of a thing managed?
-- [✓] How do multiple computations coexist?
-- [✓] What does the language know before execution?
+- ✓ How are abstractions represented?
+- ✓ How is the lifetime of a thing managed?
+- ✓ How do multiple computations coexist?
+- ✓ What does the language know before execution?
+
+<!-- end:preamble -->
 
 ---
 
 ## I. INTENT
 
 ### Why does this language exist?
+
+What we're asking:
+
+> Why was this language created, and what does its design care about?
+
+In simpler words:
+
+> What problem was this language built to solve, and what did it give up to solve it?
 
 Questions:
 
@@ -48,10 +58,6 @@ Questions:
 - [ ] What kinds of programs does it make difficult?
 - [ ] What languages or ideas influenced it?
 
-In simpler words:
-
-> Why was this language created, and what does its design care about?
-
 Covered topics:
 
 ```text
@@ -64,6 +70,8 @@ target domains
 tradeoffs
 language evolution
 ```
+
+<!-- end:intent -->
 
 ---
 
@@ -191,6 +199,8 @@ namespaces
 symbol resolution
 ```
 
+<!-- end:meaning -->
+
 ## III. COMPUTATION
 
 ### How does computation proceed?
@@ -308,6 +318,8 @@ encapsulation
 information hiding
 metaprogramming
 ```
+
+<!-- end:computation -->
 
 ## IV. TIME, STATE, AND RESOURCES
 
@@ -431,6 +443,8 @@ backtracking
 nondeterminism
 ```
 
+<!-- end:state -->
+
 ## V. WORLD
 
 ### How does a program interact with the outside world?
@@ -518,6 +532,8 @@ transactions
 distributed computation
 ```
 
+<!-- end:world -->
+
 ## VI. KNOWLEDGE AND GUARANTEES
 
 ### What does the language know before the program runs?
@@ -603,6 +619,8 @@ soundness
 unsafe escape hatches
 ```
 
+<!-- end:guarantees -->
+
 ## VII. PROGRAMS ABOUT PROGRAMS
 
 ### What can a program know or do about other programs?
@@ -642,6 +660,8 @@ proof terms
 quotation
 ```
 
+
+<!-- end:programs -->
 
 ## VIII. SCALE
 
@@ -683,6 +703,8 @@ versioning
 build systems
 linking
 ```
+
+<!-- end:scale -->
 
 ## IX. EXECUTION
 
@@ -728,6 +750,8 @@ linking
 runtime
 ```
 
+<!-- end:execution -->
+
 ## X. STYLE
 
 ### What style of programming does the language make natural?
@@ -765,6 +789,8 @@ concurrent programming
 event-driven programming
 ```
 
+<!-- end:style -->
+
 ## XI. UNIQUENESS
 
 ### What is fundamentally unusual about this language?
@@ -799,6 +825,8 @@ unusual abstractions
 language-specific metaprogramming
 language-specific guarantees
 ```
+
+<!-- end:uniqueness -->
 
 ---
 
@@ -854,9 +882,7 @@ IDENTIFY TRADEOFFS
 CONNECT TO OTHER QUESTIONS
 ```
 
-The repository should preserve this process.
-
-Each language directory is therefore an experimental answer to the same universal questions.
+The repository preserves this process: each language directory is an experimental answer to the same universal questions.
 
 ### What Does NOT Belong in the Universal Map?
 
@@ -874,7 +900,7 @@ These are useful things to learn, but they should not become primary universal q
 
 These are mechanisms.
 
-The map should ask the problem from which those mechanisms emerge.
+The map should ask about the problem from which those mechanisms emerge.
 
 ### The Self-Correction Rule
 

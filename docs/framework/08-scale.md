@@ -2,6 +2,6 @@
 
 ```{include} ../../framework.md
 :start-after: VIII. SCALE
-:end-before: IX. EXECUTION
+:end-before: <!-- end:scale -->
 :parser: myst_parser.sphinx_
 ```

@@ -2,6 +2,6 @@
 
 ```{include} ../../framework.md
 :start-after: III. COMPUTATION
-:end-before: IV. TIME, STATE, AND RESOURCES
+:end-before: <!-- end:computation -->
 :parser: myst_parser.sphinx_
 ```

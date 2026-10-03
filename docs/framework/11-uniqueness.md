@@ -2,6 +2,6 @@
 
 ```{include} ../../framework.md
 :start-after: XI. UNIQUENESS
-:end-before: THE FINAL MENTAL MODEL
+:end-before: <!-- end:uniqueness -->
 :parser: myst_parser.sphinx_
 ```

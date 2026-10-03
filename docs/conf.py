@@ -11,7 +11,16 @@ root_doc = "index"
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 html_theme = "sphinx_rtd_theme"
-html_title = "QLang — The Questions Behind Programming Languages"
+html_title = "The Questions Behind Programming Languages"
+html_favicon = "_static/favicon.svg"
+
+html_context = {
+    "display_github": True,
+    "github_user": "iamprasadraju",
+    "github_repo": "QLang",
+    "github_version": "main",
+    "conf_py_path": "/docs/",
+}
 
 myst_enable_extensions = ["tasklist"]
 myst_heading_anchors = 3

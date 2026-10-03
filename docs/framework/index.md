@@ -5,8 +5,8 @@ form the universal map: 11 categories, 19 sub-questions, and 159 checklist
 questions to ask of any programming language.
 
 ```{include} ../../framework.md
-:start-after: QLang Framework V0.1
-:end-before: I. INTENT
+:start-after: The QLang Framework
+:end-before: <!-- end:preamble -->
 :parser: myst_parser.sphinx_
 ```
 

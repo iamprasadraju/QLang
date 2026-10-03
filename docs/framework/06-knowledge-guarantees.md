@@ -2,6 +2,6 @@
 
 ```{include} ../../framework.md
 :start-after: VI. KNOWLEDGE AND GUARANTEES
-:end-before: VII. PROGRAMS ABOUT PROGRAMS
+:end-before: <!-- end:guarantees -->
 :parser: myst_parser.sphinx_
 ```

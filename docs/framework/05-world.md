@@ -2,6 +2,6 @@
 
 ```{include} ../../framework.md
 :start-after: V. WORLD
-:end-before: VI. KNOWLEDGE AND GUARANTEES
+:end-before: <!-- end:world -->
 :parser: myst_parser.sphinx_
 ```
