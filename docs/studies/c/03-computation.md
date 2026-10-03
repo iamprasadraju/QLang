@@ -8,7 +8,7 @@
 
 Statements executed by the abstract machine: `main` is called, control flows
 through calls, conditionals, loops, and `goto`, and each executed expression
-produces its value and side effects. Nothing is lazy and nothing is reactive —
+produces its value and side effects. Nothing is lazy and nothing is reactive -
 running the program means running an imperative instruction stream top to
 bottom.
 
@@ -41,7 +41,7 @@ int main(void) {
 
 Only through control flow: `&&`, `||`, and `?:` evaluate the right side only
 when needed, and an `if` guard prevents its block from running. There is no
-lazy value, no thunk, no call-by-name, and no delayed expression object —
+lazy value, no thunk, no call-by-name, and no delayed expression object -
 whenever execution reaches an expression, it is evaluated immediately.
 
 ### Can evaluation branch?
@@ -53,7 +53,7 @@ state machines are written as switch loops rather than as dispatched values.
 
 ### Can evaluation backtrack?
 
-Not natively — there is no trail, no undo log, no solver. Backtracking must be
+Not natively - there is no trail, no undo log, no solver. Backtracking must be
 hand-built: save state on the stack, restore it on failure, or `longjmp` back
 to a decision point and try the next alternative.
 
@@ -69,7 +69,7 @@ be able to.
 
 No. ISO C has no coroutines, generators, fibers, or first-class continuations:
 `setjmp` records a position and `longjmp` later *abandons* the current path to
-re-enter it — the intervening frames are gone, not paused. Green threads and
+re-enter it - the intervening frames are gone, not paused. Green threads and
 asynchronous I/O must be built from platform APIs such as `ucontext`,
 `pthread`, or OS-specific facilities.
 
@@ -78,7 +78,7 @@ asynchronous I/O must be built from platform APIs such as `ucontext`,
 Control flow, exclusively: an imperative stream over an abstract machine with
 an explicit program counter. The only rewriting happens in the preprocessor
 before the C language begins, and the only reduction happens inside the
-compiler as constant folding — neither is part of program execution.
+compiler as constant folding - neither is part of program execution.
 
 ```c
 int main(void) { int i = 0; i = i++ + 1; return i; }
@@ -106,20 +106,20 @@ header.
 A named block of code with either external linkage (visible to the whole
 program through the linker) or internal linkage (`static`, private to the
 translation unit), invoked with arguments passed by value. It has no object
-identity, no fields, and no captured environment — only its parameters, its
+identity, no fields, and no captured environment - only its parameters, its
 locals, and whatever globals it can see.
 
 ### Is behavior a value?
 
 Partially: you can take the address of a function and store it in a function
 pointer, and that pointer can be compared, copied, and called. The function
-itself is not a value — you cannot copy or construct one, and there is no
+itself is not a value - you cannot copy or construct one, and there is no
 closure value at all.
 
 ### Can behavior be passed around?
 
 Yes, as a function pointer argument whose type must match the parameter's
-prototype exactly — mismatched signatures are diagnosed. The standard library's
+prototype exactly - mismatched signatures are diagnosed. The standard library's
 `qsort` is the canonical example: it takes a comparison callback, and because
 its callback receives no user context, comparison state must live in globals
 or thread-local storage.
@@ -142,7 +142,7 @@ possible in ISO C.
 
 ### Can behavior capture context?
 
-Not automatically; every callback API therefore carries context by hand — a
+Not automatically; every callback API therefore carries context by hand - a
 `void *user`/`void *ctx` parameter, a struct of state, or module-level
 `static` variables. This single limitation shapes the entire C callback
 ecosystem, from POSIX `pthread_create` to UI toolkits.
@@ -181,7 +181,7 @@ implementations.
 
 ### How can an idea be generalized?
 
-Not with parametric polymorphism — C has none. Generalize by writing a macro
+Not with parametric polymorphism - C has none. Generalize by writing a macro
 over token lists, by passing `void *` plus a documented convention, by
 hand-writing one function per type, or by using `_Generic` to select among
 typed implementations; none of these gives you a checked, instantiated generic
@@ -191,7 +191,7 @@ function.
 
 Function arguments (values and pointers), macro arguments (token sequences),
 array bounds (including run-time VLA bounds), and compile-time constants used
-in enumerations and `_Static_assert`. Types cannot be parameters — the only
+in enumerations and `_Static_assert`. Types cannot be parameters - the only
 way to write "generic" code is to parameterize over tokens or over `void *`.
 
 ### What can be hidden?
@@ -202,12 +202,12 @@ macros you `#undef` after use. An opaque struct is the standard idiom: the
 header forward-declares the tag, the caller can only hold pointers to it.
 
 ```c
-/* widget.h — the interface exposes a name, not a layout */
+/* widget.h - the interface exposes a name, not a layout */
 struct widget;                       /* incomplete type: no size, no members */
 struct widget *widget_create(void);
 void widget_destroy(struct widget *w);
 
-/* widget.c — only this translation unit sees the definition */
+/* widget.c - only this translation unit sees the definition */
 struct widget { int id; char *name; struct widget *next; };
 ```
 
@@ -215,7 +215,7 @@ struct widget { int id; char *name; struct widget *next; };
 
 Whatever the header contains: prototypes, public `struct` layouts, `typedef`s,
 `enum` constants, configuration macros, and `extern` object declarations. The
-header file *is* the interface — there is no separate interface construct, no
+header file *is* the interface - there is no separate interface construct, no
 export list, and no visibility modifier other than `static` versus external
 linkage.
 
@@ -223,7 +223,7 @@ linkage.
 
 Anything a visible declaration permits: headers include other headers,
 functions call any declared function, and macros expand other macros. Because
-dependency is textual inclusion, the compiler never sees a dependency graph —
+dependency is textual inclusion, the compiler never sees a dependency graph -
 only the flattened result of the `#include` splicing.
 
 ### How can abstractions be composed?

@@ -42,7 +42,7 @@ exactly what made UNIX portable.
 
 Safety and abstraction. There is no bounds checking, no overflow checking, no
 lifetime tracking, no exceptions, no namespaces, no reflection, and no type
-system mechanism for nullability, ownership, or invariants — every one of those
+system mechanism for nullability, ownership, or invariants - every one of those
 is delegated to the programmer and to convention.
 
 ### Who is it designed for?
@@ -64,7 +64,7 @@ languages. Small single-file utilities compile and run in milliseconds.
 Large application domains that benefit from a runtime: GUIs, business logic
 with deep domain models, safe concurrent or distributed systems, and anything
 needing generic containers, reflective frameworks, or garbage-collected object
-graphs — all must be rebuilt by hand, which is why such code in C grows
+graphs - all must be rebuilt by hand, which is why such code in C grows
 fragile quickly.
 
 ### What languages or ideas influenced it?

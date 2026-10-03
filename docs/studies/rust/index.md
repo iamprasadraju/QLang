@@ -10,7 +10,7 @@ time against lifetimes, and unsafe code is quarantined behind an explicit
 How to read this study: every page mirrors a section of the
 {doc}`framework <../../framework/index>`. Each question from the universal
 map appears under its original heading, followed by Rust's answer. Code
-snippets are meant to be run and broken — that is the learning loop.
+snippets are meant to be run and broken - that is the learning loop.
 
 ```{toctree}
 :maxdepth: 1

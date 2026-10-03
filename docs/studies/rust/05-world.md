@@ -21,11 +21,11 @@ fn load() -> std::io::Result<String> {
 
 ### How does it access files?
 
-With `std::fs` — `File`, `read_to_string`, `OpenOptions`, `copy`, `create_dir` — using `Path`/`PathBuf` for paths and `metadata`/`symlink_metadata` for inspection. Async file operations are runtime-specific (`tokio::fs`), and permissions/symlink behavior vary by platform behind the same API.
+With `std::fs` - `File`, `read_to_string`, `OpenOptions`, `copy`, `create_dir` - using `Path`/`PathBuf` for paths and `metadata`/`symlink_metadata` for inspection. Async file operations are runtime-specific (`tokio::fs`), and permissions/symlink behavior vary by platform behind the same API.
 
 ### Networks?
 
-`std::net` offers blocking `TcpStream`, `TcpListener`, and `UdpSocket`; TLS, HTTP, and async transports are crates (`rustls`, `reqwest`, `hyper`). Nothing in the language models a protocol — networking is ordinary library code over file-descriptor-like handles.
+`std::net` offers blocking `TcpStream`, `TcpListener`, and `UdpSocket`; TLS, HTTP, and async transports are crates (`rustls`, `reqwest`, `hyper`). Nothing in the language models a protocol - networking is ordinary library code over file-descriptor-like handles.
 
 ### Processes?
 
@@ -49,7 +49,7 @@ Not in `std`: the ecosystem standard is the `rand` crate, backed by `getrandom` 
 
 ### Foreign code?
 
-C ABI interop: declare functions in an `unsafe extern "C"` block (mandatory since edition 2024), mark structs `#[repr(C)]` for layout, and call them inside `unsafe` because the compiler cannot check foreign contracts; `bindgen`/`cbindgen` generate the declarations. Only the C ABI is stable — Rust's own ABI is explicitly unstable, so exported symbols must be C-shaped.
+C ABI interop: declare functions in an `unsafe extern "C"` block (mandatory since edition 2024), mark structs `#[repr(C)]` for layout, and call them inside `unsafe` because the compiler cannot check foreign contracts; `bindgen`/`cbindgen` generate the declarations. Only the C ABI is stable - Rust's own ABI is explicitly unstable, so exported symbols must be C-shaped.
 
 ```rust
 unsafe extern "C" {
@@ -64,7 +64,7 @@ fn main() {
 
 ### External resources?
 
-Represented as RAII values whose `Drop` releases them: `File` closes, `MutexGuard` unlocks, `TcpStream` disconnects, `Child` is reaped — scope exit is the cleanup point, so early returns cannot leak. Lifetimes tie borrows to the resource, and `Arc` shares ownership of long-lived handles across threads.
+Represented as RAII values whose `Drop` releases them: `File` closes, `MutexGuard` unlocks, `TcpStream` disconnects, `Child` is reaped - scope exit is the cleanup point, so early returns cannot leak. Lifetimes tie borrows to the resource, and `Arc` shares ownership of long-lived handles across threads.
 
 ## How do multiple computations coexist?
 
@@ -84,11 +84,11 @@ assert_eq!(counts, vec![0, 1, 4, 9]);
 
 ### What can they share?
 
-`Arc<T>` whenever `T: Send + Sync`, guarded state (`Mutex<T>`, `RwLock<T>`), atomics, immutable `Sync` data, and — inside `thread::scope` — plain `&mut` to the enclosing stack. A `static` can be read from any thread only if its type is `Sync`.
+`Arc<T>` whenever `T: Send + Sync`, guarded state (`Mutex<T>`, `RwLock<T>`), atomics, immutable `Sync` data, and - inside `thread::scope` - plain `&mut` to the enclosing stack. A `static` can be read from any thread only if its type is `Sync`.
 
 ### How do they communicate?
 
-Message passing with channels (`std::sync::mpsc` — multi-producer, single-consumer; `crossbeam` and Tokio for wider shapes), which moves ownership of payloads between threads; or shared memory coordinated by locks and atomics. Actor-style designs are libraries (`actix`, `ractor`) layered on channels.
+Message passing with channels (`std::sync::mpsc` - multi-producer, single-consumer; `crossbeam` and Tokio for wider shapes), which moves ownership of payloads between threads; or shared memory coordinated by locks and atomics. Actor-style designs are libraries (`actix`, `ractor`) layered on channels.
 
 ```rust
 use std::sync::mpsc;
@@ -106,11 +106,11 @@ By wrapping it so sharing is explicit and checked: `Arc<Mutex<T>>` for the commo
 
 ### How is synchronization handled?
 
-`Mutex`, `RwLock`, `Condvar`, `Barrier`, `Once`, and atomics with explicit orderings — `Relaxed`, `Acquire`, `Release`, `AcqRel`, `SeqCst`. Orderings are memory-model contracts, not hints: choosing the wrong one yields defined but undesired behavior rather than a compile error.
+`Mutex`, `RwLock`, `Condvar`, `Barrier`, `Once`, and atomics with explicit orderings - `Relaxed`, `Acquire`, `Release`, `AcqRel`, `SeqCst`. Orderings are memory-model contracts, not hints: choosing the wrong one yields defined but undesired behavior rather than a compile error.
 
 ### Can races occur?
 
-Data races — simultaneous conflicting accesses where at least one writes, with no synchronization — are undefined behavior and unreachable from safe code. Logical races (order-dependent results, lost updates in a hand-rolled lock-free algorithm, check-then-act bugs) remain entirely possible.
+Data races - simultaneous conflicting accesses where at least one writes, with no synchronization - are undefined behavior and unreachable from safe code. Logical races (order-dependent results, lost updates in a hand-rolled lock-free algorithm, check-then-act bugs) remain entirely possible.
 
 ### Can the language detect or prevent them?
 
@@ -130,8 +130,8 @@ error[E0277]: `Rc<Cell<i32>>` cannot be sent between threads safely
 
 ### Who schedules execution?
 
-The OS kernel for threads and processes, and the async *executor* — Tokio, async-std, smol, or a custom reactor — for tasks; `std` schedules nothing (the pre-1.0 green-thread runtime was removed). The language layer only defines how a task yields (`.await`), never when it resumes.
+The OS kernel for threads and processes, and the async *executor* - Tokio, async-std, smol, or a custom reactor - for tasks; `std` schedules nothing (the pre-1.0 green-thread runtime was removed). The language layer only defines how a task yields (`.await`), never when it resumes.
 
 ### How are distributed computations represented?
 
-They are not represented natively: distribution is libraries over sockets — gRPC (`tonic`), HTTP (`reqwest`/`hyper`), serialization (`serde`) — with `Arc` and channels staying strictly process-local. There is no distributed object model, no remote reference, and no location transparency in the type system.
+They are not represented natively: distribution is libraries over sockets - gRPC (`tonic`), HTTP (`reqwest`/`hyper`), serialization (`serde`) - with `Arc` and channels staying strictly process-local. There is no distributed object model, no remote reference, and no location transparency in the type system.

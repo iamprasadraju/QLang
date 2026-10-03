@@ -6,7 +6,7 @@ directory is an experimental answer to the same universal questions, so the
 answers can be compared across languages rather than memorized as feature
 lists.
 
-A study is useful when it makes you disagree with the framework — the
+A study is useful when it makes you disagree with the framework - the
 [self-correction rule](../framework/12-mental-model.md#the-self-correction-rule)
 says: if a language defies the map, ask what question the map failed to ask.
 

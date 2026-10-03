@@ -6,11 +6,11 @@
 
 ### How is source parsed?
 
-rustc lexes the input into tokens and parses with a recursive-descent parser into an AST, capturing macro invocations as raw token trees that are expanded (and re-parsed) around the surrounding items. Parsing is edition-aware — for example, `gen` is a reserved keyword in edition 2024 but an identifier in earlier editions.
+rustc lexes the input into tokens and parses with a recursive-descent parser into an AST, capturing macro invocations as raw token trees that are expanded (and re-parsed) around the surrounding items. Parsing is edition-aware - for example, `gen` is a reserved keyword in edition 2024 but an identifier in earlier editions.
 
 ### How is meaning checked?
 
-After macro expansion: name resolution over the module and macro namespaces, lowering to HIR, type checking with trait selection (in-memory inference variables and obligation solving), lowering to MIR, then borrow checking (NLL), exhaustiveness checking, const evaluation, and lint passes — all before any machine code is emitted.
+After macro expansion: name resolution over the module and macro namespaces, lowering to HIR, type checking with trait selection (in-memory inference variables and obligation solving), lowering to MIR, then borrow checking (NLL), exhaustiveness checking, const evaluation, and lint passes - all before any machine code is emitted.
 
 ### What is elaborated?
 
@@ -33,7 +33,7 @@ Local types by unification, closure parameter and return types, method and recei
 
 ### What code is generated?
 
-Monomorphized MIR is lowered to LLVM IR, optimized, and emitted as native object files, then linked into an executable or static library (std is statically linked by default; LTO is optional). There is no bytecode and no virtual machine — the intermediate stages are exposed only as compiler output flags.
+Monomorphized MIR is lowered to LLVM IR, optimized, and emitted as native object files, then linked into an executable or static library (std is statically linked by default; LTO is optional). There is no bytecode and no virtual machine - the intermediate stages are exposed only as compiler output flags.
 
 ```console
 $ rustc --edition 2024 --emit=mir,llvm-ir,asm hello.rs
@@ -43,7 +43,7 @@ hello.ll  hello.mir  hello.rs  hello.s
 
 ### What is evaluated at compile time?
 
-`const` and `static` initializers, `const fn` bodies inside const contexts, array lengths and const-generic arguments, explicit enum discriminants, and macro-expanded constant expressions — all executed by rustc's const interpreter (the same engine Miri uses), which forbids I/O, unbounded loops, and mutation of statics. The result is baked into the binary; nothing re-runs at startup.
+`const` and `static` initializers, `const fn` bodies inside const contexts, array lengths and const-generic arguments, explicit enum discriminants, and macro-expanded constant expressions - all executed by rustc's const interpreter (the same engine Miri uses), which forbids I/O, unbounded loops, and mutation of statics. The result is baked into the binary; nothing re-runs at startup.
 
 ```rust
 const TABLE: [u64; 4] = {
@@ -73,7 +73,7 @@ error[E0080]: evaluation of constant value failed
 
 ### What gets erased?
 
-Lifetimes and regions — they exist only for checking and are gone before code generation — plus zero-sized types and `PhantomData` (no storage is emitted), generic parameters (replaced per instantiation by monomorphization rather than shared), `const` items (inlined at use), and debug information unless `-g` is passed. Trait objects erase the concrete type but keep a vtable pointer.
+Lifetimes and regions - they exist only for checking and are gone before code generation - plus zero-sized types and `PhantomData` (no storage is emitted), generic parameters (replaced per instantiation by monomorphization rather than shared), `const` items (inlined at use), and debug information unless `-g` is passed. Trait objects erase the concrete type but keep a vtable pointer.
 
 ```rust
 use std::marker::PhantomData;

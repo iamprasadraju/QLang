@@ -32,7 +32,7 @@ string_literal '"world"'	 [LeadingSpace]	Loc=<phase.c:4:17>
 ```
 
 Note the locations: the preprocessor printed each statement as a single line,
-yet the tokens still carry their positions in the physical file — `+` and `2`
+yet the tokens still carry their positions in the physical file - `+` and `2`
 on line 2 (the splice continuation), the strings on lines 3 and 4.
 Diagnostics will point at `phase.c`, even though the program the parser
 received has been reflowed onto different lines.
@@ -41,7 +41,7 @@ received has been reflowed onto different lines.
 
 During semantic analysis against the declarations in scope: every expression's
 type is checked, constraint violations are diagnosed (a diagnostic is required
-for them), and then the standard's famous gap applies — a program that is
+for them), and then the standard's famous gap applies - a program that is
 *well-formed but undefined* requires no diagnostic at all. The compiler
 guarantees well-typedness, never correctness.
 
@@ -50,7 +50,7 @@ guarantees well-typedness, never correctness.
 Very little: implicit conversions (integer promotions, array-to-pointer decay,
 function-to-pointer decay, lvalue conversion), default zero-initialization of
 static storage, and the default argument promotions for variadic calls. No
-wrappers are inserted, no traits resolved, no generics monomorphized — the
+wrappers are inserted, no traits resolved, no generics monomorphized - the
 source maps almost one-to-one onto the machine's operations.
 
 ### What is inferred?
@@ -92,7 +92,7 @@ $ wc -c hello.i hello.s hello.o hello
 ```
 
 The 26 KB of preprocessed header text becomes a 728-byte object file and then
-a 33 KB dynamically linked executable — most of it the C runtime and the
+a 33 KB dynamically linked executable - most of it the C runtime and the
 program's own code, none of it the standard library's source.
 
 ```asm
@@ -112,7 +112,7 @@ _main:                                  ; @main
 
 Preprocessor conditionals and arithmetic, constant expressions (enumeration
 values, static array sizes, initializers, `_Static_assert`), constant folding,
-inlining, and — in C23 — `constexpr` calls with constant arguments. The
+inlining, and - in C23 - `constexpr` calls with constant arguments. The
 constant `3 * 4` below is already the immediate `12` in unoptimized output:
 
 ```asm
@@ -132,7 +132,7 @@ _f:                                     ; int f(void) { return 3 * 4 + g(); }
 Comments and preprocessor artifacts (the preprocessor's output *is* the program
 the compiler parses), typedef names and type qualifiers (`const`, `restrict`)
 which exist only inside the compiler, `static` functions the optimizer
-inlined or discarded, and — unless `-g` was passed — essentially all type
+inlined or discarded, and - unless `-g` was passed - essentially all type
 information. What remains in the binary is addresses, instructions, and
 strings.
 

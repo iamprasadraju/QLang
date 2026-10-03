@@ -9,7 +9,7 @@
 Through the standard library's `FILE` streams (`printf`, `scanf`,
 `fgetc`, `fwrite`) and, outside ISO C, through the platform's byte-level
 descriptors (POSIX `read`/`write`, Windows `_read`). The language itself has
-no I/O operators — everything beyond the abstract machine is library
+no I/O operators - everything beyond the abstract machine is library
 behavior, specified by the library clause or by the platform.
 
 ### How does it access files?
@@ -55,7 +55,7 @@ else if (pid > 0) waitpid(pid, NULL, 0); /* parent */
 
 Through raw pointers to memory-mapped I/O registers declared `volatile`,
 through compiler intrinsics, and through inline assembly in the compiler's own
-dialect (`__asm__ volatile` on GCC/Clang, `__asm` on MSVC) — all
+dialect (`__asm__ volatile` on GCC/Clang, `__asm` on MSVC) - all
 non-standard. Exact-width types and `struct` layout make device registers
 representable.
 
@@ -74,8 +74,8 @@ are platform APIs (`clock_gettime(CLOCK_MONOTONIC)`, `QueryPerformanceCounter`).
 
 ### Randomness?
 
-`rand()`/`srand()` — deterministic, often a weak PRNG, and explicitly not for
-security — plus Microsoft's `rand_s` on Windows (an extension, absent from
+`rand()`/`srand()` - deterministic, often a weak PRNG, and explicitly not for
+security - plus Microsoft's `rand_s` on Windows (an extension, absent from
 ISO C). Serious randomness requires the OS (`/dev/urandom`, `getrandom`,
 `BCryptGenRandom`) or a hardware intrinsic such as `_rdrand64_step`.
 
@@ -91,12 +91,12 @@ the portable core (stdio, string, math, stdlib, time, locale, threads).
 C *is* the foreign interface: other languages expose C calling conventions,
 and any C library is directly callable from C. Within a program, `dlopen`/
 `dlsym` (POSIX) or `LoadLibrary`/`GetProcAddress` (Windows) resolve symbols at
-run time; there is no sandbox — loaded code executes with full privilege.
+run time; there is no sandbox - loaded code executes with full privilege.
 
 ### External resources?
 
 Represented as raw handles: `FILE *`, file descriptors, `malloc`ed buffers,
-mutexes, sockets — each with an open/close pair and no automatic cleanup.
+mutexes, sockets - each with an open/close pair and no automatic cleanup.
 `atexit` handlers and signal handlers are the only ISO hooks that run at
 shutdown.
 
@@ -138,7 +138,7 @@ condition variables (`cnd_t`, `pthread_cond_t`) and atomics carry the
 
 By manual discipline: protect every shared non-atomic object with a mutex, or
 make it `_Atomic`. The only edges the memory model orders are those created
-by atomics, mutexes, thread creation, and thread join — everything else is a
+by atomics, mutexes, thread creation, and thread join - everything else is a
 race.
 
 ### How is synchronization handled?
@@ -146,7 +146,7 @@ race.
 `mtx_t` mutexes (plain, recursive, timed), `cnd_t` condition variables,
 `once_flag`/`call_once`, spin locks built on `atomic_flag`, and platform
 primitives such as futexes and SRW locks. The standard has no reader-writer
-lock, no barrier, and no lock-free queue — those are libraries you write.
+lock, no barrier, and no lock-free queue - those are libraries you write.
 
 ### Can races occur?
 
@@ -158,7 +158,7 @@ survive on one machine and corrupt data on the next.
 ### Can the language detect or prevent them?
 
 No. C11 makes a data race undefined behavior but says nothing to the compiler
-about diagnosing it, so no warning and no runtime check appears by default —
+about diagnosing it, so no warning and no runtime check appears by default -
 the standard's answer to a race is "the program has no defined behavior".
 Tooling, not the language, catches it:
 
@@ -209,7 +209,7 @@ increments were lost, and the compiler and CPU were both entitled to do that.
 ### Who schedules execution?
 
 The operating system (or the hardware, for interrupt handlers). C has no
-cooperative scheduler, no fiber library, and no event loop in the standard —
+cooperative scheduler, no fiber library, and no event loop in the standard -
 green threads require platform APIs such as `ucontext`, or a library.
 
 ### How are distributed computations represented?

@@ -9,7 +9,7 @@
 C does the opposite of what most languages add: it deliberately provides
 *less*. There is no runtime to speak of, no garbage collector, no exceptions,
 no reflection, no namespaces, no modules, no closures, no standard threads
-header until C11 — and, uniquely among mainstream languages, a separate text
+header until C11 - and, uniquely among mainstream languages, a separate text
 processor (the preprocessor) that runs before the language exists and can
 rewrite the program's tokens without understanding a single one of them.
 
@@ -18,7 +18,7 @@ rewrite the program's tokens without understanding a single one of them.
 Systems software with hard resource budgets: a kernel, a bootloader, firmware,
 a device driver, or a compiler must control layout, interrupts, and allocation
 cost directly, and must be callable from everywhere. C's answer is a portable
-assembly with types — the machine model in the standard, nothing layered on
+assembly with types - the machine model in the standard, nothing layered on
 top.
 
 ### Why is the ordinary solution insufficient?
@@ -35,7 +35,7 @@ abstractions.
 
 An enormous amount of the world's infrastructure: UNIX and everything derived
 from it, bootloaders, hypervisors, interpreters for higher-level languages,
-embedded software in every appliance, and — most distinctively — the C ABI as
+embedded software in every appliance, and - most distinctively - the C ABI as
 the universal foreign function interface that every other language targets.
 Static linking into a binary of a few kilobytes is also a direct consequence.
 
@@ -79,7 +79,7 @@ Address 0x00016dbcee88 is located in stack of thread T0 at offset 40 in frame
 SUMMARY: AddressSanitizer: stack-buffer-overflow asan.c:3 in copy
 ```
 
-In an ordinary build the same program does not report anything — it corrupts
+In an ordinary build the same program does not report anything - it corrupts
 the stack and continues. The cost is not that bugs happen; it is that only a
 separate tool, run deliberately, ever mentions them.
 
@@ -89,7 +89,7 @@ Linkers, object formats, and ABIs; POSIX and the entire Unix family; every
 foreign-function interface in Python, Rust, Go, Java, and the rest; JIT
 compilers that emit C or the C calling convention; bootloaders, device trees,
 and embedded SDKs; plus the C-specific idioms that substitute for missing
-language services — ownership by convention, opaque handles, tagged unions,
+language services - ownership by convention, opaque handles, tagged unions,
 and prefix-based fake namespaces.
 
 ### What would be difficult without it?
@@ -98,5 +98,5 @@ Anything requiring exact memory layout, direct hardware access, minimal
 footprint, or interoperation with other languages: writing a runtime, a
 filesystem, an interrupt handler, or a library meant to be called from
 anywhere. Conversely, what is difficult without *other* languages is exactly
-the application-level safety C never tried to provide — the trade is the
+the application-level safety C never tried to provide - the trade is the
 language's entire identity.

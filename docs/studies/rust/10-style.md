@@ -10,7 +10,7 @@ Encoding invariants in types, refactoring with the compiler verifying every use 
 
 ### What does it make awkward?
 
-Reflection-heavy and dynamically typed code, self-referential or cyclic object graphs, exploratory prototyping while the design is still moving, deeply nested optional-field data (builder and serde crates exist for this), long compile times on heavily generic code, and REPL-style interaction — there is no first-class REPL.
+Reflection-heavy and dynamically typed code, self-referential or cyclic object graphs, exploratory prototyping while the design is still moving, deeply nested optional-field data (builder and serde crates exist for this), long compile times on heavily generic code, and REPL-style interaction - there is no first-class REPL.
 
 ### What does idiomatic code look like?
 
@@ -48,4 +48,4 @@ Cyclic object graphs without `Weak` or indices, inheritance hierarchies (traits 
 
 ### What way of thinking does the language encourage?
 
-"Make invalid states unrepresentable" — design the type so the illegal configurations cannot be constructed — and, before asking who may touch data, asking who owns it. Errors are values, types are the documentation of intent, abstraction must cost nothing at run time, and threads are just ordinary consumers of `Send` types rather than a special hazard zone.
+"Make invalid states unrepresentable" - design the type so the illegal configurations cannot be constructed - and, before asking who may touch data, asking who owns it. Errors are values, types are the documentation of intent, abstraction must cost nothing at run time, and threads are just ordinary consumers of `Send` types rather than a special hazard zone.

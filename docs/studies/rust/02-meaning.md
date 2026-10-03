@@ -64,13 +64,13 @@ Anything that inhabits a type: deeply nested structs and enums, raw byte strings
 
 ### What cannot be expressed naturally?
 
-Types created at run time, structural/row polymorphism, inheritance hierarchies, null, and truly self-referential values. "Object with optional fields" becomes an enum or a builder crate, and type-level computation stops at const generics — there are no types indexed by arbitrary computed values.
+Types created at run time, structural/row polymorphism, inheritance hierarchies, null, and truly self-referential values. "Object with optional fields" becomes an enum or a builder crate, and type-level computation stops at const generics - there are no types indexed by arbitrary computed values.
 
 ## What does source code mean?
 
 ### What constructs does the language recognize?
 
-Items (`fn`, `struct`, `enum`, `trait`, `impl`, `mod`, `use`, `const`, `static`, `type`), statements (`let`, expression statements, nested items), expressions (blocks included — a block is an expression), attributes `#[...]`, and macro invocations. Because macros are part of the grammar, the compiler accepts a token stream at invocation sites before deciding what it means.
+Items (`fn`, `struct`, `enum`, `trait`, `impl`, `mod`, `use`, `const`, `static`, `type`), statements (`let`, expression statements, nested items), expressions (blocks included - a block is an expression), attributes `#[...]`, and macro invocations. Because macros are part of the grammar, the compiler accepts a token stream at invocation sites before deciding what it means.
 
 ### How is syntax mapped to meaning?
 
@@ -103,17 +103,17 @@ It introduces a name into a scope: items are order-independent inside a module (
 
 ### What does a program mean?
 
-A crate: for an executable, the meaning is `fn main` running to completion — plus any threads and async tasks it spawns — on a target platform; for a library, the meaning is the observable behavior of its public items. Statics initialize before `main`, and destructors run as owned values die, so meaning includes initialization and teardown, not just `main`'s body.
+A crate: for an executable, the meaning is `fn main` running to completion - plus any threads and async tasks it spawns - on a target platform; for a library, the meaning is the observable behavior of its public items. Statics initialize before `main`, and destructors run as owned values die, so meaning includes initialization and teardown, not just `main`'s body.
 
 ### Is meaning defined by evaluation, transformation, proof, relation, effects, or something else?
 
-Primarily operational evaluation (eager, with specified left-to-right order), layered with mandatory compile-time transformation (macro expansion, desugaring, monomorphization, const evaluation). Safety is a checked typing/borrow judgment rather than a program-supplied proof, and effects are unrestricted — the type system records only incidental consequences such as `io::Result`.
+Primarily operational evaluation (eager, with specified left-to-right order), layered with mandatory compile-time transformation (macro expansion, desugaring, monomorphization, const evaluation). Safety is a checked typing/borrow judgment rather than a program-supplied proof, and effects are unrestricted - the type system records only incidental consequences such as `io::Result`.
 
 ## What does a name refer to?
 
 ### What can be named?
 
-Values (`let` bindings, `const`, `static`), items (functions, types, traits, modules, crates), struct fields, generic parameters, labels (`'outer:`), lifetimes (`'a`), and macros. A path such as `crate::net::Server` names an item through the module tree, while a variable name denotes a *place* — a location in memory — not just a value.
+Values (`let` bindings, `const`, `static`), items (functions, types, traits, modules, crates), struct fields, generic parameters, labels (`'outer:`), lifetimes (`'a`), and macros. A path such as `crate::net::Server` names an item through the module tree, while a variable name denotes a *place* - a location in memory - not just a value.
 
 ### What does a name denote?
 
@@ -148,7 +148,7 @@ Shadowing is legal: a second `let x` introduces a new binding that hides the old
 
 ### Can names be captured?
 
-Closures capture enclosing names automatically — per variable, by shared reference, mutable reference, or move, inferred from use — and `move` forces by-value capture (required for `'static` thread spawns). Since edition 2021, capture is per place element, so a closure may capture only `self.field` rather than all of `self`.
+Closures capture enclosing names automatically - per variable, by shared reference, mutable reference, or move, inferred from use - and `move` forces by-value capture (required for `'static` thread spawns). Since edition 2021, capture is per place element, so a closure may capture only `self.field` rather than all of `self`.
 
 ```rust
 let limit = 10;

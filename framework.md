@@ -367,7 +367,7 @@ A declaration introduces a name and attaches it to a definition before any use o
 <details>
 <summary><strong>semantics</strong></summary>
 
-Semantics assigns meaning to well-formed programs: what a program does once the grammar has accepted it. It forces the fundamental choice of what meaning is — a computation, a mathematical object, a proof, or a relation between states. Without semantics, questions about correctness or equivalence have no answer, only opinions.
+Semantics assigns meaning to well-formed programs: what a program does once the grammar has accepted it. It forces the fundamental choice of what meaning is - a computation, a mathematical object, a proof, or a relation between states. Without semantics, questions about correctness or equivalence have no answer, only opinions.
 
 </details>
 
@@ -459,7 +459,7 @@ A name is a programmer-chosen handle for a thing in the program, and its only jo
 <details>
 <summary><strong>bindings</strong></summary>
 
-A binding connects a name to the entity it denotes, created by a declaration or an assignment. It forces a decision about identity and mutability: may a binding be reassigned, and does the name then denote the new entity? The strength of a binding — whether it can be captured or escaped — determines much of a language's safety story.
+A binding connects a name to the entity it denotes, created by a declaration or an assignment. It forces a decision about identity and mutability: may a binding be reassigned, and does the name then denote the new entity? The strength of a binding - whether it can be captured or escaped - determines much of a language's safety story.
 
 </details>
 
@@ -906,7 +906,7 @@ Encapsulation groups state and the operations over it so they can be changed tog
 <details>
 <summary><strong>information hiding</strong></summary>
 
-Information hiding deliberately keeps a design decision — representation, algorithm, resource — invisible to clients so it can change without breaking them. It forces the contrast with mere encapsulation: a module may expose its fields and still hide its strategy. Parnas argued that hiding decisions, not data, is what reduces coupling.
+Information hiding deliberately keeps a design decision - representation, algorithm, resource - invisible to clients so it can change without breaking them. It forces the contrast with mere encapsulation: a module may expose its fields and still hide its strategy. Parnas argued that hiding decisions, not data, is what reduces coupling.
 
 </details>
 
@@ -977,7 +977,7 @@ Mutation is the act of replacing a value, or part of a value, after it has been 
 <details>
 <summary><strong>immutability</strong></summary>
 
-Immutability means a binding or value cannot change after construction, so every operation returns a new value instead of altering an old one. It buys simple reasoning: an immutable value behaves the same whenever it is observed, which helps in parallel execution and in caching. The cost is allocation and rebuilding, since updates must copy structure. Languages differ in degree — some make everything immutable by default, others allow mutation but track it in the type system.
+Immutability means a binding or value cannot change after construction, so every operation returns a new value instead of altering an old one. It buys simple reasoning: an immutable value behaves the same whenever it is observed, which helps in parallel execution and in caching. The cost is allocation and rebuilding, since updates must copy structure. Languages differ in degree - some make everything immutable by default, others allow mutation but track it in the type system.
 
 </details>
 
@@ -991,7 +991,7 @@ Assignment writes a new value into an existing storage location, so a name or fi
 <details>
 <summary><strong>mutable variables</strong></summary>
 
-A mutable variable is a storage location whose value may be reassigned after initialization. Languages need a way to express changing values — loop counters, accumulators, current state — so most provide some form of mutable binding, though some make bindings immutable by default and require a keyword like `var` or `mut` to opt in. Requiring an explicit marker documents intent and lets readers tell constant from changing data. The tradeoff is verbosity against clarity about where change can happen.
+A mutable variable is a storage location whose value may be reassigned after initialization. Languages need a way to express changing values - loop counters, accumulators, current state - so most provide some form of mutable binding, though some make bindings immutable by default and require a keyword like `var` or `mut` to opt in. Requiring an explicit marker documents intent and lets readers tell constant from changing data. The tradeoff is verbosity against clarity about where change can happen.
 
 </details>
 
@@ -1100,7 +1100,7 @@ The heap is storage whose lifetime is independent of any single call frame, so o
 <details>
 <summary><strong>allocation</strong></summary>
 
-Allocation is the process of reserving a region of storage and handing it to the program as usable memory or a resource. Programs allocate constantly — objects, buffers, closures, growing tables — so the strategy determines much of a runtime's performance profile. A language must decide granularity, synchronization, and whether allocation sites are visible in the source or hidden behind constructors and the collector. The tradeoff is control and predictability against convenience and safety.
+Allocation is the process of reserving a region of storage and handing it to the program as usable memory or a resource. Programs allocate constantly - objects, buffers, closures, growing tables - so the strategy determines much of a runtime's performance profile. A language must decide granularity, synchronization, and whether allocation sites are visible in the source or hidden behind constructors and the collector. The tradeoff is control and predictability against convenience and safety.
 
 </details>
 
@@ -1184,7 +1184,7 @@ Resource management covers everything a program must obtain and release: memory,
 <details>
 <summary><strong>memory layout</strong></summary>
 
-Memory layout describes how a value's fields are arranged in storage: contiguously or through indirection, inline or boxed, and in what order. It determines cache locality, allocation size, and what a language can pass cheaply by value. A language must decide how much layout it exposes — transparent and stable in C, mostly abstracted in managed runtimes — because exposing it gives performance control while freezing future representation changes. The tradeoff is interoperability and speed against abstraction freedom.
+Memory layout describes how a value's fields are arranged in storage: contiguously or through indirection, inline or boxed, and in what order. It determines cache locality, allocation size, and what a language can pass cheaply by value. A language must decide how much layout it exposes - transparent and stable in C, mostly abstracted in managed runtimes - because exposing it gives performance control while freezing future representation changes. The tradeoff is interoperability and speed against abstraction freedom.
 
 </details>
 
@@ -1252,7 +1252,7 @@ Option is a type that models "either a value or nothing," normally as two cases:
 <details>
 <summary><strong>Maybe</strong></summary>
 
-Maybe is the same two-case "value or nothing" type as Option, familiar from Haskell and ML-family languages. Its typical operations — mapping and chaining — let a computation skip the whole pipeline when nothing is present instead of testing at each step. Presenting absence as a type rather than a sentinel keeps partial functions from silently returning junk. The design question is whether the language offers one such type, or separate types for absence, failure, and alternatives.
+Maybe is the same two-case "value or nothing" type as Option, familiar from Haskell and ML-family languages. Its typical operations - mapping and chaining - let a computation skip the whole pipeline when nothing is present instead of testing at each step. Presenting absence as a type rather than a sentinel keeps partial functions from silently returning junk. The design question is whether the language offers one such type, or separate types for absence, failure, and alternatives.
 
 </details>
 
@@ -1273,7 +1273,7 @@ Either is a general two-case type that holds one of two alternatives, frequently
 <details>
 <summary><strong>error codes</strong></summary>
 
-Error codes report failure by returning a special value — a negative number, a status enum, a null pointer — that the caller must check. They are cheap, portable, and usable across language boundaries, which is why operating system APIs favor them. Their weakness is that checking is optional, so unchecked results silently continue with invalid data. A language can improve on raw codes by making the status part of the type or by pairing it with assertions.
+Error codes report failure by returning a special value - a negative number, a status enum, a null pointer - that the caller must check. They are cheap, portable, and usable across language boundaries, which is why operating system APIs favor them. Their weakness is that checking is optional, so unchecked results silently continue with invalid data. A language can improve on raw codes by making the status part of the type or by pairing it with assertions.
 
 </details>
 
@@ -1447,7 +1447,7 @@ Foreign functions are routines compiled under a different language's rules and i
 <details>
 <summary><strong>effects</strong></summary>
 
-An effect is an observable interaction beyond returning a value: reading input, writing a file, throwing an exception, mutating state, or generating randomness. Treating effects as first-class — visible in signatures, ordered in evaluation, or abstractable — lets a language say what a function actually does rather than only what it computes. Pure functional languages restrict or isolate effects entirely; others allow them freely and document them in prose. The tradeoff is precision about behavior against the ceremony of declaring and threading effects through code.
+An effect is an observable interaction beyond returning a value: reading input, writing a file, throwing an exception, mutating state, or generating randomness. Treating effects as first-class - visible in signatures, ordered in evaluation, or abstractable - lets a language say what a function actually does rather than only what it computes. Pure functional languages restrict or isolate effects entirely; others allow them freely and document them in prose. The tradeoff is precision about behavior against the ceremony of declaring and threading effects through code.
 
 </details>
 
@@ -1513,7 +1513,7 @@ distributed computation
 <details>
 <summary><strong>processes</strong></summary>
 
-A process is an independently executing program with its own address space, and multiple processes let a machine run unrelated work with strong isolation between them. They communicate through explicit channels — pipes, sockets, shared files — because they cannot touch each other's memory directly. A language must decide whether concurrency is expressed at the process level, delegated to the operating system, or hidden behind libraries. The tradeoff is isolation and crash containment against the higher cost of creation and communication.
+A process is an independently executing program with its own address space, and multiple processes let a machine run unrelated work with strong isolation between them. They communicate through explicit channels - pipes, sockets, shared files - because they cannot touch each other's memory directly. A language must decide whether concurrency is expressed at the process level, delegated to the operating system, or hidden behind libraries. The tradeoff is isolation and crash containment against the higher cost of creation and communication.
 
 </details>
 
@@ -1541,7 +1541,7 @@ A lock is a mutual-exclusion primitive that lets one thread at a time enter a cr
 <details>
 <summary><strong>mutexes</strong></summary>
 
-A mutex is a lock specifically guarding shared data, where only the holder may read or write the protected region. Convention pairs a mutex with the data it protects so that the access discipline is at least visible to readers of the code. The recurring hazards are deadlock from circular waiting, starvation under unfair scheduling, and contention that erases the benefit of parallelism. Languages and libraries vary in whether a mutex can be forgotten — some mark the data as locked, others trust the programmer.
+A mutex is a lock specifically guarding shared data, where only the holder may read or write the protected region. Convention pairs a mutex with the data it protects so that the access discipline is at least visible to readers of the code. The recurring hazards are deadlock from circular waiting, starvation under unfair scheduling, and contention that erases the benefit of parallelism. Languages and libraries vary in whether a mutex can be forgotten - some mark the data as locked, others trust the programmer.
 
 </details>
 
@@ -1576,7 +1576,7 @@ An actor is a unit of computation that owns private state and interacts with oth
 <details>
 <summary><strong>tasks</strong></summary>
 
-A task is a unit of schedulable work, smaller and cheaper than a thread, that a runtime may run on a pool of threads and migrate between them. Tasks let a language express concurrency at the level of the application — one per request, connection, or job — without binding each to an operating system resource. The design must say whether tasks can run in parallel, what they may share, and how they are cancelled. The tradeoff is lightweight concurrency against the requirement that tasks not assume thread-local identity.
+A task is a unit of schedulable work, smaller and cheaper than a thread, that a runtime may run on a pool of threads and migrate between them. Tasks let a language express concurrency at the level of the application - one per request, connection, or job - without binding each to an operating system resource. The design must say whether tasks can run in parallel, what they may share, and how they are cancelled. The tradeoff is lightweight concurrency against the requirement that tasks not assume thread-local identity.
 
 </details>
 
@@ -1590,14 +1590,14 @@ async/await is syntax for writing asynchronous code in a straight-line style, wh
 <details>
 <summary><strong>futures</strong></summary>
 
-A future is a value representing a result that may not be available yet, which can be polled, awaited, or combined with other futures. Futures separate the description of work from its completion, letting a runtime decide when and where to execute each piece. Designers must decide how futures are driven — by an executor, by the awaiting caller, or lazily — and how cancellation and errors propagate. The tradeoff is composability and nonblocking behavior against the machinery of executors and wakeups.
+A future is a value representing a result that may not be available yet, which can be polled, awaited, or combined with other futures. Futures separate the description of work from its completion, letting a runtime decide when and where to execute each piece. Designers must decide how futures are driven - by an executor, by the awaiting caller, or lazily - and how cancellation and errors propagate. The tradeoff is composability and nonblocking behavior against the machinery of executors and wakeups.
 
 </details>
 
 <details>
 <summary><strong>coroutines</strong></summary>
 
-A coroutine is a function that can suspend itself and later resume from the exact point it stopped, keeping its locals intact across the pause. This gives cooperative multitasking and generator-style streaming without rewriting the function as a state machine by hand. The design questions are who controls resumption — the coroutine or its caller — and whether suspension is allowed anywhere or only at marked points. The tradeoff is natural expression of sequential-looking concurrent code against the need for runtime support and careful scheduling.
+A coroutine is a function that can suspend itself and later resume from the exact point it stopped, keeping its locals intact across the pause. This gives cooperative multitasking and generator-style streaming without rewriting the function as a state machine by hand. The design questions are who controls resumption - the coroutine or its caller - and whether suspension is allowed anywhere or only at marked points. The tradeoff is natural expression of sequential-looking concurrent code against the need for runtime support and careful scheduling.
 
 </details>
 
@@ -1667,14 +1667,14 @@ formal verification
 <details>
 <summary><strong>static analysis</strong></summary>
 
-Static analysis examines source or compiled code without running it, deriving facts about behavior from syntax, types, and annotations. It catches mistakes early — undefined names, unreachable code, resource leaks, suspicious patterns — when fixing them is still cheap. The central tradeoff is soundness against precision: an analysis that never misses a bug tends to produce many false alarms, and vice versa. A language decides how much analysis belongs in the compiler, how much in separate tools, and how errors are reported.
+Static analysis examines source or compiled code without running it, deriving facts about behavior from syntax, types, and annotations. It catches mistakes early - undefined names, unreachable code, resource leaks, suspicious patterns - when fixing them is still cheap. The central tradeoff is soundness against precision: an analysis that never misses a bug tends to produce many false alarms, and vice versa. A language decides how much analysis belongs in the compiler, how much in separate tools, and how errors are reported.
 
 </details>
 
 <details>
 <summary><strong>type checking</strong></summary>
 
-Type checking verifies that every expression and operation is used consistently with the declared or inferred types of its parts. It rejects whole categories of nonsense before execution — treating a number as a function, branching on a value that has no such case — and documents intent in the program itself. The design choice is when and how strictly to check: gradually, permissively with coercion, or strictly with local inference. A language must also decide whether type errors are failures of the program or failures of the annotation.
+Type checking verifies that every expression and operation is used consistently with the declared or inferred types of its parts. It rejects whole categories of nonsense before execution - treating a number as a function, branching on a value that has no such case - and documents intent in the program itself. The design choice is when and how strictly to check: gradually, permissively with coercion, or strictly with local inference. A language must also decide whether type errors are failures of the program or failures of the annotation.
 
 </details>
 
@@ -1688,14 +1688,14 @@ Type inference derives types the programmer did not write, filling in parameters
 <details>
 <summary><strong>static typing</strong></summary>
 
-Static typing means types are checked before the program runs, so a program that passes the compiler cannot perform operations its types forbid. The guarantee is strong — certain bugs are unrepresentable — and it enables optimization, refactoring, and APIs that document their requirements structurally. The cost is annotation and the discipline of updating types as programs change. Languages differ in whether typing is explicit, inferred, gradual, or optional, and in how much they permit escape from the checked world.
+Static typing means types are checked before the program runs, so a program that passes the compiler cannot perform operations its types forbid. The guarantee is strong - certain bugs are unrepresentable - and it enables optimization, refactoring, and APIs that document their requirements structurally. The cost is annotation and the discipline of updating types as programs change. Languages differ in whether typing is explicit, inferred, gradual, or optional, and in how much they permit escape from the checked world.
 
 </details>
 
 <details>
 <summary><strong>generic constraints</strong></summary>
 
-Generic constraints bound a type parameter with requirements — that it is comparable, hashable, ordered, or implements particular operations — so generic code can use those capabilities. They let one implementation serve many types while keeping the guarantees visible at the definition and checked wherever the generic is used. Constraints can be expressed as interfaces, traits, bounds, or concepts, each differing in what the compiler may assume. The tradeoff is a richer signature against the ability to write code that is both reusable and precise.
+Generic constraints bound a type parameter with requirements - that it is comparable, hashable, ordered, or implements particular operations - so generic code can use those capabilities. They let one implementation serve many types while keeping the guarantees visible at the definition and checked wherever the generic is used. Constraints can be expressed as interfaces, traits, bounds, or concepts, each differing in what the compiler may assume. The tradeoff is a richer signature against the ability to write code that is both reusable and precise.
 
 </details>
 
@@ -1716,7 +1716,7 @@ Exhaustiveness checking requires that code handling a value cover every possible
 <details>
 <summary><strong>const evaluation</strong></summary>
 
-Const evaluation computes expressions at compile time — dimensions, offsets, configuration, lookup tables — so the result is a constant baked into the program. It moves work off the critical path, enforces that a value is known statically, and lets constants depend on other constants. The language must restrict what such evaluation may do, excluding unbounded recursion or effects, so compilation always terminates. The tradeoff is a safe, restricted subset of the language against flexibility in what may be computed early.
+Const evaluation computes expressions at compile time - dimensions, offsets, configuration, lookup tables - so the result is a constant baked into the program. It moves work off the critical path, enforces that a value is known statically, and lets constants depend on other constants. The language must restrict what such evaluation may do, excluding unbounded recursion or effects, so compilation always terminates. The tradeoff is a safe, restricted subset of the language against flexibility in what may be computed early.
 
 </details>
 
@@ -1751,7 +1751,7 @@ Refinement types narrow an ordinary type with a predicate, so a natural-number t
 <details>
 <summary><strong>effect checking</strong></summary>
 
-Effect checking verifies statically that a computation performs only the effects its signature permits — no file access in a pure context, no exceptions where none are declared. It extends the type system from "what does this return" to "what else does this do," making side effects visible where they are hard to observe. Designers must choose an effect vocabulary and decide whether absence of an effect is inferred or annotated. The tradeoff is precision about behavior against annotation burden and the difficulty of tracking effects through higher-order code.
+Effect checking verifies statically that a computation performs only the effects its signature permits - no file access in a pure context, no exceptions where none are declared. It extends the type system from "what does this return" to "what else does this do," making side effects visible where they are hard to observe. Designers must choose an effect vocabulary and decide whether absence of an effect is inferred or annotated. The tradeoff is precision about behavior against annotation burden and the difficulty of tracking effects through higher-order code.
 
 </details>
 
@@ -1826,7 +1826,7 @@ unsafe escape hatches
 <details>
 <summary><strong>type safety</strong></summary>
 
-Type safety guarantees that a program cannot use a value as a type does not allow — treating bytes as a pointer, calling a non-function, matching on a constructor that is absent. It is established before execution and holds for every input, unlike tests. The guarantee depends on what the type system permits, including any unchecked corners such as casts or foreign code. The tradeoff is expressive restriction against the elimination of an entire class of runtime crashes.
+Type safety guarantees that a program cannot use a value as a type does not allow - treating bytes as a pointer, calling a non-function, matching on a constructor that is absent. It is established before execution and holds for every input, unlike tests. The guarantee depends on what the type system permits, including any unchecked corners such as casts or foreign code. The tradeoff is expressive restriction against the elimination of an entire class of runtime crashes.
 
 </details>
 
@@ -1847,7 +1847,7 @@ Null safety is the guarantee that a reference can never point to an absent value
 <details>
 <summary><strong>race freedom</strong></summary>
 
-Race freedom is the guarantee that no program exhibits a data race — unsynchronized accesses to the same location from different threads, at least one of them a write. It removes the nondeterministic corruption that makes concurrent programs so hard to test, since racy code often passes locally and fails under load. Languages reach it through ownership rules that forbid shared mutable state, immutability, isolated tasks, or runtime detection. The tradeoff is restricting how threads may share data against making concurrent behavior deterministic and provable.
+Race freedom is the guarantee that no program exhibits a data race - unsynchronized accesses to the same location from different threads, at least one of them a write. It removes the nondeterministic corruption that makes concurrent programs so hard to test, since racy code often passes locally and fails under load. Languages reach it through ownership rules that forbid shared mutable state, immutability, isolated tasks, or runtime detection. The tradeoff is restricting how threads may share data against making concurrent behavior deterministic and provable.
 
 </details>
 
@@ -1889,7 +1889,7 @@ Contracts as a guarantee are the machine-checked preconditions, postconditions, 
 <details>
 <summary><strong>invariants</strong></summary>
 
-Invariants are properties that hold at every point of a defined region: a data structure's shape never breaks, a balance never goes negative, a lock state is consistent. A language's value comes from making them checkable — through types, assertions, or the discipline of private state — so that violations surface where they occur rather than far downstream. Designers decide which invariants the system maintains automatically and which programmers must uphold. The tradeoff is enforcement overhead and restricted operations against confidence that a structure's state remains well-formed.
+Invariants are properties that hold at every point of a defined region: a data structure's shape never breaks, a balance never goes negative, a lock state is consistent. A language's value comes from making them checkable - through types, assertions, or the discipline of private state - so that violations surface where they occur rather than far downstream. Designers decide which invariants the system maintains automatically and which programmers must uphold. The tradeoff is enforcement overhead and restricted operations against confidence that a structure's state remains well-formed.
 
 </details>
 
@@ -1910,7 +1910,7 @@ Soundness is the meta-property that a language's checks mean what they claim: if
 <details>
 <summary><strong>unsafe escape hatches</strong></summary>
 
-Unsafe escape hatches are deliberate exits from a language's guarantees — an `unsafe` block, an unchecked cast, raw pointer operations, an FFI call — where the programmer takes responsibility for what the checker cannot prove. They are necessary because systems code sometimes needs operations the type system cannot justify, such as interpreting memory as a different layout. The design question is how much they infect: whether unsafety stays contained at a boundary or leaks into everything it touches. The tradeoff is practical reach against the integrity of the safety guarantee.
+Unsafe escape hatches are deliberate exits from a language's guarantees - an `unsafe` block, an unchecked cast, raw pointer operations, an FFI call - where the programmer takes responsibility for what the checker cannot prove. They are necessary because systems code sometimes needs operations the type system cannot justify, such as interpreting memory as a different layout. The design question is how much they infect: whether unsafety stays contained at a boundary or leaks into everything it touches. The tradeoff is practical reach against the integrity of the safety guarantee.
 
 </details>
 
@@ -2031,7 +2031,7 @@ Proof terms are programs that encode the fact that a property holds, so checking
 <details>
 <summary><strong>quotation</strong></summary>
 
-Quotation marks a piece of code as data to be manipulated rather than executed directly, usually paired with an operation that runs it later. It matters because it gives metaprograms a precise boundary between the code being described and the code doing the describing. The design choice is what quotation produces — a string, a tree, a typed value — which determines how much hygiene and type checking the quoted code retains.
+Quotation marks a piece of code as data to be manipulated rather than executed directly, usually paired with an operation that runs it later. It matters because it gives metaprograms a precise boundary between the code being described and the code doing the describing. The design choice is what quotation produces - a string, a tree, a typed value - which determines how much hygiene and type checking the quoted code retains.
 
 </details>
 
@@ -2160,7 +2160,7 @@ Versioning assigns numbers or labels to releases so dependents can state which c
 <details>
 <summary><strong>build systems</strong></summary>
 
-A build system turns source into deliverables and decides what to rebuild and in what order. It exists because a real project has more inputs than files — compilers, flags, generated sources, external artifacts — and coordinating them by hand is slow and error-prone. The tradeoff is between declaring dependencies explicitly, which is verbose but accurate, and letting the tool infer them, which is convenient but can silently skip necessary work.
+A build system turns source into deliverables and decides what to rebuild and in what order. It exists because a real project has more inputs than files - compilers, flags, generated sources, external artifacts - and coordinating them by hand is slow and error-prone. The tradeoff is between declaring dependencies explicitly, which is verbose but accurate, and letting the tool infer them, which is convenient but can silently skip necessary work.
 
 </details>
 
@@ -2237,7 +2237,7 @@ Parsing arranges tokens into a structured form according to the language's gramm
 <details>
 <summary><strong>AST</strong></summary>
 
-The AST is the tree the parser produces, representing the program's structure without the surface detail of punctuation and layout. It exists as the shared currency between phases: every later analysis reads and rewrites this tree rather than the raw source. The design choice is how abstract to make it — normalizing sugar into a small core simplifies analysis, while preserving surface forms helps tooling map back to source positions.
+The AST is the tree the parser produces, representing the program's structure without the surface detail of punctuation and layout. It exists as the shared currency between phases: every later analysis reads and rewrites this tree rather than the raw source. The design choice is how abstract to make it - normalizing sugar into a small core simplifies analysis, while preserving surface forms helps tooling map back to source positions.
 
 </details>
 
@@ -2251,7 +2251,7 @@ Semantic analysis is the set of checks verifying that the parsed program makes s
 <details>
 <summary><strong>elaboration</strong></summary>
 
-Elaboration turns surface syntax into an explicit core language, filling in what the programmer left implicit. It exists because convenient surface features — type inference, implicit conversions, anonymous functions — rely on information that appears only after names are resolved and types are known. The design choice is how much stays implicit in the source and how much gets written out in the core, which determines both programmer effort and the precision of compiler errors.
+Elaboration turns surface syntax into an explicit core language, filling in what the programmer left implicit. It exists because convenient surface features - type inference, implicit conversions, anonymous functions - rely on information that appears only after names are resolved and types are known. The design choice is how much stays implicit in the source and how much gets written out in the core, which determines both programmer effort and the precision of compiler errors.
 
 </details>
 
@@ -2279,7 +2279,7 @@ Optimization rewrites a program into an equivalent one that runs faster, uses le
 <details>
 <summary><strong>code generation</strong></summary>
 
-Code generation lowers the checked and possibly optimized program into the instruction form the target actually executes. It exists because a large gap separates a language's abstractions from the operations a processor or virtual machine provides. The design choice is what the target is — machine instructions, bytecode, or calls into a runtime — which determines how much of the language's semantics must be implemented in generated code versus in support libraries.
+Code generation lowers the checked and possibly optimized program into the instruction form the target actually executes. It exists because a large gap separates a language's abstractions from the operations a processor or virtual machine provides. The design choice is what the target is - machine instructions, bytecode, or calls into a runtime - which determines how much of the language's semantics must be implemented in generated code versus in support libraries.
 
 </details>
 
@@ -2293,7 +2293,7 @@ Bytecode is a compact, typically stack- or register-based instruction set execut
 <details>
 <summary><strong>virtual machines</strong></summary>
 
-A virtual machine is a software implementation of an instruction set and execution model sitting between the program and the host system. Virtual machines exist because they give a language one execution target that behaves identically everywhere, and because they can host services — garbage collection, profiling, deoptimization — that are hard to provide in raw machine code. The tradeoff is the cost of the abstraction layer against the control and portability it buys.
+A virtual machine is a software implementation of an instruction set and execution model sitting between the program and the host system. Virtual machines exist because they give a language one execution target that behaves identically everywhere, and because they can host services - garbage collection, profiling, deoptimization - that are hard to provide in raw machine code. The tradeoff is the cost of the abstraction layer against the control and portability it buys.
 
 </details>
 
@@ -2335,7 +2335,7 @@ Linking merges separately compiled object files and libraries into one executabl
 <details>
 <summary><strong>runtime</strong></summary>
 
-The runtime is the set of libraries, conventions, and services a program depends on while executing: allocation, scheduling, error handling, and entry into the program. It exists because most languages are not executed by hardware alone; some support must live alongside the user's code. The design choice is how large and how implicit that support is — a minimal runtime eases deployment and interop, while a rich one enables garbage collection, green threads, and reflection at the cost of coupling.
+The runtime is the set of libraries, conventions, and services a program depends on while executing: allocation, scheduling, error handling, and entry into the program. It exists because most languages are not executed by hardware alone; some support must live alongside the user's code. The design choice is how large and how implicit that support is - a minimal runtime eases deployment and interop, while a rich one enables garbage collection, green threads, and reflection at the cost of coupling.
 
 </details>
 
@@ -2389,7 +2389,7 @@ Imperative programming describes computation as a sequence of statements that mu
 <details>
 <summary><strong>procedural programming</strong></summary>
 
-Procedural programming organizes a program into procedures, or named blocks of instructions that operate on data and can be called repeatedly. It exists as a response to unstructured code: a procedure gives a step a name, makes it reusable, and gives an error somewhere concrete to point. The design choice is how procedures relate to data — free-standing functions taking records, or methods bound to objects — which determines where behavior lives and how it is discovered.
+Procedural programming organizes a program into procedures, or named blocks of instructions that operate on data and can be called repeatedly. It exists as a response to unstructured code: a procedure gives a step a name, makes it reusable, and gives an error somewhere concrete to point. The design choice is how procedures relate to data - free-standing functions taking records, or methods bound to objects - which determines where behavior lives and how it is discovered.
 
 </details>
 
@@ -2403,7 +2403,7 @@ Functional programming treats computation as the evaluation of expressions built
 <details>
 <summary><strong>object-oriented programming</strong></summary>
 
-Object-oriented programming groups data and the operations on it into objects that communicate through defined interfaces. It exists to manage complexity by bundling state with the code allowed to change it, making it easier to reason about who can do what. The design choice is which relationships objects may have — inheritance, composition, or traits — and whether subtyping is nominal or structural, which trades flexibility against predictability of behavior.
+Object-oriented programming groups data and the operations on it into objects that communicate through defined interfaces. It exists to manage complexity by bundling state with the code allowed to change it, making it easier to reason about who can do what. The design choice is which relationships objects may have - inheritance, composition, or traits - and whether subtyping is nominal or structural, which trades flexibility against predictability of behavior.
 
 </details>
 
@@ -2417,14 +2417,14 @@ Logic programming expresses a program as a set of logical relations and asks the
 <details>
 <summary><strong>declarative programming</strong></summary>
 
-Declarative programming states what a program should compute rather than the sequence of steps that computes it. It exists because many problems have a natural specification, and letting the system derive the implementation removes a large class of errors tied to hand-written procedure. The tradeoff is that the programmer cedes control over execution strategy — a gain when the runtime does better than a manual sequence, a loss when it does not.
+Declarative programming states what a program should compute rather than the sequence of steps that computes it. It exists because many problems have a natural specification, and letting the system derive the implementation removes a large class of errors tied to hand-written procedure. The tradeoff is that the programmer cedes control over execution strategy - a gain when the runtime does better than a manual sequence, a loss when it does not.
 
 </details>
 
 <details>
 <summary><strong>generic programming</strong></summary>
 
-Generic programming writes code that works over a range of types or values specified later, expressing only the requirements a type must satisfy. It exists because the alternative is duplicating identical logic for every type, which multiplies both code and bugs. The design choice is how requirements are stated and checked — constrained parameters, traits, concepts, or structural matching — which trades compile-time safety and error quality against expressiveness.
+Generic programming writes code that works over a range of types or values specified later, expressing only the requirements a type must satisfy. It exists because the alternative is duplicating identical logic for every type, which multiplies both code and bugs. The design choice is how requirements are stated and checked - constrained parameters, traits, concepts, or structural matching - which trades compile-time safety and error quality against expressiveness.
 
 </details>
 
@@ -2438,14 +2438,14 @@ Data-oriented programming organizes a program around its data layouts and the pa
 <details>
 <summary><strong>concurrent programming</strong></summary>
 
-Concurrent programming structures a program as multiple computations making progress during overlapping periods, whether or not they run at the same instant. It exists because servers, simulations, and interfaces involve independent activity that a single sequential flow cannot express. The design choice is what the language offers for coordination — shared memory with locks, message passing, or structured tasks — each trading performance and ease against the difficulty of reasoning about races and deadlock.
+Concurrent programming structures a program as multiple computations making progress during overlapping periods, whether or not they run at the same instant. It exists because servers, simulations, and interfaces involve independent activity that a single sequential flow cannot express. The design choice is what the language offers for coordination - shared memory with locks, message passing, or structured tasks - each trading performance and ease against the difficulty of reasoning about races and deadlock.
 
 </details>
 
 <details>
 <summary><strong>event-driven programming</strong></summary>
 
-Event-driven programming inverts control: the program registers handlers and yields to a dispatcher that calls them in response to input, timers, or messages. It exists because a program waiting on many independent sources cannot usefully hold a thread for each one. The tradeoff is inversion of flow — code fragments across callbacks or coroutines — which buys scalability on few threads at the cost of control flow that is harder to follow.
+Event-driven programming inverts control: the program registers handlers and yields to a dispatcher that calls them in response to input, timers, or messages. It exists because a program waiting on many independent sources cannot usefully hold a thread for each one. The tradeoff is inversion of flow - code fragments across callbacks or coroutines - which buys scalability on few threads at the cost of control flow that is harder to follow.
 
 </details>
 
@@ -2497,7 +2497,7 @@ A unique language feature is a capability one language offers and its mainstream
 <details>
 <summary><strong>unusual semantics</strong></summary>
 
-Unusual semantics are meanings a language assigns to familiar constructs that differ from what most programmers expect. They arise when a language prioritizes a property — determinism, safety, cost transparency — over the conventional behavior of an operator, a loop, or an evaluation order. The tradeoff is between the guarantee purchased and the surprise inflicted: the deviation must be justified by a failure of the ordinary rule, or it becomes a trap for anyone arriving from another language.
+Unusual semantics are meanings a language assigns to familiar constructs that differ from what most programmers expect. They arise when a language prioritizes a property - determinism, safety, cost transparency - over the conventional behavior of an operator, a loop, or an evaluation order. The tradeoff is between the guarantee purchased and the surprise inflicted: the deviation must be justified by a failure of the ordinary rule, or it becomes a trap for anyone arriving from another language.
 
 </details>
 
@@ -2511,7 +2511,7 @@ An unusual type system departs from the standard arrangement of simple, referenc
 <details>
 <summary><strong>unusual memory models</strong></summary>
 
-An unusual memory model defines how storage, ownership, and deallocation behave in a way that differs from both manual management and garbage collection. It exists because languages seek guarantees — no dangling pointers, no data races, predictable destruction — that conventional models cannot provide at the same time. The tradeoff is usually between safety and freedom: constraining aliasing or lifetimes eliminates whole bug classes but restricts patterns programmers otherwise write without thinking.
+An unusual memory model defines how storage, ownership, and deallocation behave in a way that differs from both manual management and garbage collection. It exists because languages seek guarantees - no dangling pointers, no data races, predictable destruction - that conventional models cannot provide at the same time. The tradeoff is usually between safety and freedom: constraining aliasing or lifetimes eliminates whole bug classes but restricts patterns programmers otherwise write without thinking.
 
 </details>
 
@@ -2525,14 +2525,14 @@ An unusual execution model changes what it means for a program to run: how units
 <details>
 <summary><strong>unusual abstractions</strong></summary>
 
-Unusual abstractions are ways of packaging behavior and structure that do not correspond to the classes, functions, or modules most languages provide. They emerge when a language's core commitments — purity, ownership, concurrency, types — make a standard abstraction unusable and force a replacement. The question is what the new abstraction makes natural that the familiar one made awkward, and what programmers must relearn to use it correctly.
+Unusual abstractions are ways of packaging behavior and structure that do not correspond to the classes, functions, or modules most languages provide. They emerge when a language's core commitments - purity, ownership, concurrency, types - make a standard abstraction unusable and force a replacement. The question is what the new abstraction makes natural that the familiar one made awkward, and what programmers must relearn to use it correctly.
 
 </details>
 
 <details>
 <summary><strong>language-specific metaprogramming</strong></summary>
 
-Language-specific metaprogramming is the metaprogramming facility this particular language provides, shaped by its own syntax, type system, and compilation model. It matters because what can be reflected on, generated, or transformed differs sharply between languages, and the available facility determines which abstractions can be built at all. The evaluation is what it operates on — text, tokens, trees, or typed terms — what stage it runs at, and what guarantees survive the transformation.
+Language-specific metaprogramming is the metaprogramming facility this particular language provides, shaped by its own syntax, type system, and compilation model. It matters because what can be reflected on, generated, or transformed differs sharply between languages, and the available facility determines which abstractions can be built at all. The evaluation is what it operates on - text, tokens, trees, or typed terms - what stage it runs at, and what guarantees survive the transformation.
 
 </details>
 

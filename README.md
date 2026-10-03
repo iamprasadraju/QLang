@@ -28,7 +28,7 @@ QLang is about finding the questions behind those answers.
 2. Open a framework section and take one question.
 3. Run the learning loop: **ask → understand → find the language's answer → build a small experiment → break it → observe → explain → identify tradeoffs → connect to other questions.**
 4. Record the answers in your own study directory, in the framework's structure.
-5. When the language does something the map cannot explain, do not force it into an existing category — ask *"What question did we fail to ask?"* and improve the map.
+5. When the language does something the map cannot explain, do not force it into an existing category - ask *"What question did we fail to ask?"* and improve the map.
 
 Two worked studies exist as proof of concept: [Rust](docs/studies/rust/index.md) and [C](docs/studies/c/index.md). Read them alongside the framework sections they mirror.
 
@@ -55,8 +55,8 @@ python3 -m venv .venv
 
 ### Improving the framework
 
-Edits to `framework.md` are welcome when they make a question more universal (see the seven criteria at the top of the file and the self-correction rule at the bottom). Keep the section structure intact — the docs site and both studies split on the exact `##` headings. If you change a heading, update the `{include}` markers in `docs/framework/*.md` to match.
+Edits to `framework.md` are welcome when they make a question more universal (see the seven criteria at the top of the file and the self-correction rule at the bottom). Keep the section structure intact - the docs site and both studies split on the exact `##` headings. If you change a heading, update the `{include}` markers in `docs/framework/*.md` to match.
 
 ## License
 
-[CC-BY-4.0](LICENSE) — reuse and adapt with attribution.
+[CC-BY-4.0](LICENSE) - reuse and adapt with attribution.

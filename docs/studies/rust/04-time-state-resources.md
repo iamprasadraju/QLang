@@ -14,7 +14,7 @@ Everything by default: `let x = 5;` cannot be reassigned, `&T` holders cannot mu
 
 ### What is state?
 
-The values inhabiting memory as execution proceeds: locals, struct fields, heap buffers owned by `Vec`/`String`, captured closure environments, thread-locals, and globals. In Rust state is always owned by some concrete storage location — there is no ambient store or collector-managed heap separate from ownership.
+The values inhabiting memory as execution proceeds: locals, struct fields, heap buffers owned by `Vec`/`String`, captured closure environments, thread-locals, and globals. In Rust state is always owned by some concrete storage location - there is no ambient store or collector-managed heap separate from ownership.
 
 ### Where does state live?
 
@@ -38,7 +38,7 @@ error[E0502]: cannot borrow `v` as mutable because it is also borrowed as immuta
 
 ### Who observes the change?
 
-Anyone holding a valid reference after the mutation ends — the checker guarantees no observer exists during an exclusive borrow. `RefCell` moves the check to run time (a conflicting `borrow` panics), and atomics let observers see writes ordered by an explicit memory ordering.
+Anyone holding a valid reference after the mutation ends - the checker guarantees no observer exists during an exclusive borrow. `RefCell` moves the check to run time (a conflicting `borrow` panics), and atomics let observers see writes ordered by an explicit memory ordering.
 
 ```rust
 use std::cell::RefCell;
@@ -79,7 +79,7 @@ assert_eq!(hits.load(Ordering::Relaxed), 4);
 
 ### When is something created?
 
-A stack value when its initializer runs, a temporary when an expression evaluates it (normally destroyed at the end of the statement, extended to the block in some `let` forms), heap memory when `Box`/`Vec` allocate, `static`s at program initialization, and `const`s never — they are inlined, not created.
+A stack value when its initializer runs, a temporary when an expression evaluates it (normally destroyed at the end of the statement, extended to the block in some `let` forms), heap memory when `Box`/`Vec` allocate, `static`s at program initialization, and `const`s never - they are inlined, not created.
 
 ### Where does it live?
 
@@ -87,11 +87,11 @@ Inline in its owner: inside a stack frame, inside a heap allocation, or in stati
 
 ### Who is responsible for it?
 
-Exactly one owner — the variable, field, or container that holds the value. Ownership moves on assignment or pass-by-value, and the new owner inherits drop responsibility; borrows confer access, never responsibility.
+Exactly one owner - the variable, field, or container that holds the value. Ownership moves on assignment or pass-by-value, and the new owner inherits drop responsibility; borrows confer access, never responsibility.
 
 ### Who can access it?
 
-The owner unconditionally, plus anyone holding a live borrow: any number of `&T`, or exactly one `&mut T`. Name-level reachability (`pub`) is a separate permission from memory-level access — an item can be visible yet never aliased, or private yet reachable inside its module.
+The owner unconditionally, plus anyone holding a live borrow: any number of `&T`, or exactly one `&mut T`. Name-level reachability (`pub`) is a separate permission from memory-level access - an item can be visible yet never aliased, or private yet reachable inside its module.
 
 ### When does it stop existing?
 
@@ -124,7 +124,7 @@ Many shared borrows, or one exclusive borrow; `Rc`/`Arc` turn borrows into count
 
 ### What happens when it becomes invalid?
 
-In safe code it cannot be observed: use-after-move (E0382), use-after-free, and borrowing across an invalidating mutation are compile errors, and holding `&str` across a `String` reallocation is likewise rejected. If `unsafe` code defeats the checker, the behavior is undefined — Miri can flag it on an execution it analyzes.
+In safe code it cannot be observed: use-after-move (E0382), use-after-free, and borrowing across an invalidating mutation are compile errors, and holding `&str` across a `String` reallocation is likewise rejected. If `unsafe` code defeats the checker, the behavior is undefined - Miri can flag it on an execution it analyzes.
 
 ```console
 error[E0382]: borrow of moved value: `s`
@@ -140,13 +140,13 @@ error[E0382]: borrow of moved value: `s`
 
 ### Who releases its resources?
 
-The owner, through compiler-inserted drop glue at scope exit or explicit drop, chaining into the type's `Drop` impl — RAII: `File` closes, `MutexGuard` unlocks, sockets disconnect, child processes are waited on. `Rc`/`Arc` release their inner value when the last count disappears, the global allocator frees heap memory, and no collector ever runs.
+The owner, through compiler-inserted drop glue at scope exit or explicit drop, chaining into the type's `Drop` impl - RAII: `File` closes, `MutexGuard` unlocks, sockets disconnect, child processes are waited on. `Rc`/`Arc` release their inner value when the last count disappears, the global allocator frees heap memory, and no collector ever runs.
 
 ## What happens when computation does not proceed normally?
 
 ### How is absence represented?
 
-As `Option<T>` — `None` or `Some(value)` — with no null anywhere in the language. Idiomatic APIs return it (`HashMap::get`, `Iterator::find`), and `#[must_use]` makes ignoring the result a warning.
+As `Option<T>` - `None` or `Some(value)` - with no null anywhere in the language. Idiomatic APIs return it (`HashMap::get`, `Iterator::find`), and `#[must_use]` makes ignoring the result a warning.
 
 ### How does failure happen?
 
@@ -170,7 +170,7 @@ assert!(double("x").is_err());
 
 ### How are exceptional situations represented?
 
-As ordinary data: an error enum implementing `Display` and `std::error::Error` (often derived with `thiserror`), or `Box<dyn Error>` for heterogeneous errors (`anyhow` in applications). Panics carry a message, a location, and a thread name — there are no catchable typed exception objects.
+As ordinary data: an error enum implementing `Display` and `std::error::Error` (often derived with `thiserror`), or `Box<dyn Error>` for heterogeneous errors (`anyhow` in applications). Panics carry a message, a location, and a thread name - there are no catchable typed exception objects.
 
 ```console
 thread 'main' panicked at src/main.rs:2:5:
@@ -180,7 +180,7 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 
 ### Can computation have multiple possible outcomes?
 
-Yes, at the value level: `Result`/`Option` alternatives, exhaustive `match` over variants, and nondeterministic inputs (clock, RNG — the latter via the `rand` crate). The language itself has no nondeterminism operator and no built-in notion of probability.
+Yes, at the value level: `Result`/`Option` alternatives, exhaustive `match` over variants, and nondeterministic inputs (clock, RNG - the latter via the `rand` crate). The language itself has no nondeterminism operator and no built-in notion of probability.
 
 ### Can it backtrack?
 
@@ -188,7 +188,7 @@ Only by writing it: recursion that returns `Option`, explicit state stacks, or p
 
 ### Can failure be recovered from?
 
-By matching the `Err` and continuing, by defaults (`unwrap_or`, `unwrap_or_else`), by catching an unwinding panic with `std::panic::catch_unwind`, and by recovering poisoned locks through `PoisonError::into_inner`. Recovery is ordinary code — nothing about failure is privileged.
+By matching the `Err` and continuing, by defaults (`unwrap_or`, `unwrap_or_else`), by catching an unwinding panic with `std::panic::catch_unwind`, and by recovering poisoned locks through `PoisonError::into_inner`. Recovery is ordinary code - nothing about failure is privileged.
 
 ### Can the programmer be forced to handle failure?
 

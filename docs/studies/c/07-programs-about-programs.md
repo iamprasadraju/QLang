@@ -8,8 +8,8 @@
 
 No. There is no reflection: a running program cannot enumerate its own
 functions, fields, annotations, or call graph, and there is no runtime type
-information. A C program can inspect *data* that happens to be source text —
-debuggers, parsers, and `grep` exist — but that is reading files, not
+information. A C program can inspect *data* that happens to be source text -
+debuggers, parsers, and `grep` exist - but that is reading files, not
 introspection.
 
 ### Can code generate code?
@@ -36,7 +36,7 @@ long id_long(long x) { return x; }
 Only at the token level, before parsing: `#` stringifies, `##` concatenates,
 `#include` splices whole files, and `#if`/`#else` selects between token
 streams. Because the preprocessor has no notion of grammar, it cannot respect
-scopes or types — it is a text tool applied to a language it cannot parse.
+scopes or types - it is a text tool applied to a language it cannot parse.
 
 ```c
 #define STR(x)    #x
@@ -84,7 +84,7 @@ At compile time and shallowly: `sizeof`, `_Alignof`, `_Generic` (select one of
 several expressions by the type of an operand), and `typeof`/`__typeof__`
 (build a declaration from an expression's type, standardized as `typeof` in
 C23). None of them can enumerate a struct's members, produce a type name at
-run time, or walk a type graph — there is no RTTI.
+run time, or walk a type graph - there is no RTTI.
 
 ```c
 #define type_name(x) _Generic((x), \
@@ -93,7 +93,7 @@ run time, or walk a type graph — there is no RTTI.
     double: "double",              \
     char *: "char *",              \
     default: "other")
-/* type_name(42) expands to "int" — chosen while compiling, erased afterwards */
+/* type_name(42) expands to "int" - chosen while compiling, erased afterwards */
 ```
 
 ### Can the language extend itself?
@@ -125,5 +125,5 @@ As attributes and assertions, not as proofs: C11 provides `_Noreturn`,
 (`[[nodiscard]]`, `[[deprecated]]`, `[[maybe_unused]]`, `[[fallthrough]]`,
 plus implementation names such as `[[gnu::...]]`). Documentation, static
 analyzer annotations (SAL, `_Nonnull`), and comments carry metadata for tools
-only — no proof terms, no contracts checked by the compiler, no dependent
+only - no proof terms, no contracts checked by the compiler, no dependent
 indexing of any kind.

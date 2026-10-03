@@ -7,15 +7,15 @@
 ### What is mutable?
 
 Everything you can form a modifiable lvalue for: local and global objects,
-heap memory, array elements, struct members, and — by intent — hardware
+heap memory, array elements, struct members, and - by intent - hardware
 registers declared `volatile`. `const` is a compile-time promise to the
 programmer, not a runtime property: cast away the qualifier or reach the
 object through an earlier alias and nothing stops you.
 
 ### What is immutable?
 
-Almost nothing. String literals are the exception — writing through one is
-undefined behavior — and a `const` object at file scope usually lands in a
+Almost nothing. String literals are the exception - writing through one is
+undefined behavior - and a `const` object at file scope usually lands in a
 read-only page, but any pointer that existed before the qualification can be
 used to write. C has no deep, enforced immutability.
 
@@ -37,7 +37,7 @@ implementation-defined but queryable with `sizeof`, `offsetof`, and
 
 ### Who may change it?
 
-Any code that can name the object or reach its address — pointers are
+Any code that can name the object or reach its address - pointers are
 unchecked and there is no access control at run time. `const`, `static`, and
 file scope constrain what the *compiler* lets you write, never what the
 machine can do.
@@ -51,7 +51,7 @@ other threads see whatever the hardware and synchronization allow.
 
 ### Can change be isolated?
 
-Not by the language — only by convention (pass copies, keep state inside one
+Not by the language - only by convention (pass copies, keep state inside one
 `.c` file) plus the `restrict` qualifier, which lets the compiler assume that
 within a block the pointed-to objects are not accessed through other pointers.
 Breaking that promise is undefined behavior.
@@ -71,7 +71,7 @@ void add(float * restrict dst,
 
 Yes: through `const`, `volatile`, `restrict`, flow analysis, and the
 effective-type rules of C11 6.5 (strict aliasing), which say a store through
-`float *` updates the value of a `float` object — and that reading that
+`float *` updates the value of a `float` object - and that reading that
 storage as `int` afterwards is undefined. With `-fstrict-aliasing` (on at
 `-O2`) the compiler exploits exactly this.
 
@@ -107,7 +107,7 @@ and the program behaves as written.
 
 If two threads modify the same non-atomic object without synchronization, the
 result is a data race, and C11 5.1.2.4 states that a data race results in
-undefined behavior — not "some value", not "a warning". The defined tools are
+undefined behavior - not "some value", not "a warning". The defined tools are
 mutexes and `_Atomic` objects, and only they establish happens-before edges.
 
 ```c
@@ -132,7 +132,7 @@ int main(void) {
 Static objects exist from program start; automatic objects are created when
 their declaration executes (block entry for ordinary types, the declaration
 itself for VLAs and compound literals); `malloc` creates an allocated object at
-the moment it returns a non-null pointer. There is no constructor concept —
+the moment it returns a non-null pointer. There is no constructor concept -
 "creation" is just storage becoming usable.
 
 ### Where does it live?
@@ -146,7 +146,7 @@ storage.
 ### Who is responsible for it?
 
 The programmer, without exception. There is no destructor, no RAII, no
-garbage collector, and no reference counting in ISO C — every allocation has a
+garbage collector, and no reference counting in ISO C - every allocation has a
 matching `free` because you wrote it.
 
 ### Who can access it?
@@ -161,12 +161,12 @@ temporarily narrows it.
 Automatic objects at block exit (or when a `longjmp` leaves the block),
 static objects at program termination, allocated objects at `free`, and
 temporaries at the end of the full expression that uses them. After that, the
-storage may be reused — but existing pointers still hold the old address.
+storage may be reused - but existing pointers still hold the old address.
 
 ### Can its lifetime be extended?
 
-Only by moving the data somewhere longer-lived — copying into a static buffer,
-promoting a local to `static`, or re-allocating — and then updating every
+Only by moving the data somewhere longer-lived - copying into a static buffer,
+promoting a local to `static`, or re-allocating - and then updating every
 pointer yourself. A pointer never extends the life of its pointee, and C has
 no reborrow, pin, or scoped-timing construct.
 
@@ -178,7 +178,7 @@ same object at the same time with no way to ask whether they do.
 
 ### What happens when it becomes invalid?
 
-Nothing visible happens — until you dereference, and then it is undefined
+Nothing visible happens - until you dereference, and then it is undefined
 behavior: you read reused bytes, corrupt unrelated data, or crash. Use-after
 free, dangling pointers to dead frames, and double free are the three common
 forms, and the language detects none of them.
@@ -218,7 +218,7 @@ sentinel a given function uses is documentation, not type information.
 
 A function returns an error indication (negative value, `NULL`, a status code)
 and, where the C library specifies it, sets the thread-local `errno`. Failure
-is an ordinary return path — nothing unwinds, nothing is thrown, and the
+is an ordinary return path - nothing unwinds, nothing is thrown, and the
 return type is unchanged.
 
 ### How does failure propagate?
@@ -252,7 +252,7 @@ int main(void) {
 
 Compiling that at `-O2` prints `recovered, v=0` while `-O0` prints `v=1`:
 automatic variables modified between `setjmp` and `longjmp` keep whatever
-value they had in storage, and the register-cached one is lost — the standard
+value they had in storage, and the register-cached one is lost - the standard
 calls them indeterminate.
 
 ### Can computation have multiple possible outcomes?
@@ -280,7 +280,7 @@ practice.
 
 Never. Ignoring a return value is legal and common; C23's `[[nodiscard]]`
 turns the common case into a warning, and `_Noreturn` documents functions that
-never return normally — but no construct makes forgetting an error a
+never return normally - but no construct makes forgetting an error a
 constraint violation.
 
 ```c

@@ -18,7 +18,7 @@ Local variable types by unification, closure signatures, method resolution (auto
 
 ### What can it reject?
 
-Type mismatches, missing trait impls, use-after-move and borrow conflicts, non-exhaustive matches, private-item access, outlives violations, non-constant values in const contexts, unsafe operations outside `unsafe`, and invalid `#[repr]` combinations — all before code generation.
+Type mismatches, missing trait impls, use-after-move and borrow conflicts, non-exhaustive matches, private-item access, outlives violations, non-constant values in const contexts, unsafe operations outside `unsafe`, and invalid `#[repr]` combinations - all before code generation.
 
 ```console
 error[E0004]: non-exhaustive patterns: `None` not covered
@@ -41,7 +41,7 @@ Trait bounds and supertraits, outlives relations (`'a: 'b`), associated-type equ
 
 ### Can types depend on values?
 
-Yes, within const generics: array lengths `[T; N]`, structs parameterized by integers, `bool`s, and `char`s (`Flag<true>`), with generic const expressions on a best-effort stable subset. Types indexed by arbitrary runtime values, computed tuple sizes, or proofs do not exist — there are no full dependent types.
+Yes, within const generics: array lengths `[T; N]`, structs parameterized by integers, `bool`s, and `char`s (`Flag<true>`), with generic const expressions on a best-effort stable subset. Types indexed by arbitrary runtime values, computed tuple sizes, or proofs do not exist - there are no full dependent types.
 
 ```rust
 struct Buffer<const N: usize> {
@@ -55,7 +55,7 @@ fn checksum(buf: &Buffer<32>) -> u8 {
 
 ### Can the language express invariants?
 
-By construction and encapsulation: newtypes with private fields (`Meters(f64)`), std's `NonZeroU32`, typestate (a checker function is the only way to obtain `Token<Valid>`), and `PhantomData` for phantom parameters. There is no `requires`/`ensures` syntax — an invariant is a property the code maintains, not a formula the compiler checks.
+By construction and encapsulation: newtypes with private fields (`Meters(f64)`), std's `NonZeroU32`, typestate (a checker function is the only way to obtain `Token<Valid>`), and `PhantomData` for phantom parameters. There is no `requires`/`ensures` syntax - an invariant is a property the code maintains, not a formula the compiler checks.
 
 ### Can programs be partially evaluated?
 
@@ -63,7 +63,7 @@ Effectively yes: monomorphization specializes generic code per instantiation, `c
 
 ### Can properties be proved?
 
-Not by the language: the compiler's proofs are limited to its built-in safety properties. External tools cover the rest — Kani (model checking), Prusti/Creusot/Verus (program verification), Miri (undefined behavior on a given execution) — and none of them is part of `rustc`.
+Not by the language: the compiler's proofs are limited to its built-in safety properties. External tools cover the rest - Kani (model checking), Prusti/Creusot/Verus (program verification), Miri (undefined behavior on a given execution) - and none of them is part of `rustc`.
 
 ## What does the language guarantee?
 
@@ -104,7 +104,7 @@ Memory safety and data-race freedom for safe code, no null dereferences, determi
 
 ### What properties can only be tested?
 
-Performance, absence of deadlocks, business-logic correctness, liveness under concurrency, and the general soundness of `unsafe` code — Miri and sanitizers find bugs only on the paths they exercise. Completeness of error handling is also a testing/review concern, not a compiler one.
+Performance, absence of deadlocks, business-logic correctness, liveness under concurrency, and the general soundness of `unsafe` code - Miri and sanitizers find bugs only on the paths they exercise. Completeness of error handling is also a testing/review concern, not a compiler one.
 
 ### What can the compiler prove?
 
@@ -112,11 +112,11 @@ That well-typed safe programs cannot exhibit undefined behavior (assuming a soun
 
 ### What programs are impossible to express safely?
 
-Self-referential structs, intrusive or cyclic graphs with live back-pointers, aliasing-plus-mutation structures, and arbitrary pointer arithmetic. Each requires `unsafe`, `Rc`/`RefCell`/`Weak`, index-based designs, or an arena — the design must change before the code compiles.
+Self-referential structs, intrusive or cyclic graphs with live back-pointers, aliasing-plus-mutation structures, and arbitrary pointer arithmetic. Each requires `unsafe`, `Rc`/`RefCell`/`Weak`, index-based designs, or an arena - the design must change before the code compiles.
 
 ### Where can the guarantees be bypassed?
 
-Inside `unsafe` blocks, `unsafe fn` bodies, and `unsafe impl`s; through raw pointers, FFI calls, `static mut`, `mem::transmute`, `MaybeUninit`, and `ManuallyDrop`; and — rarely but real — through unsound bugs in dependencies or the standard library. `unsafe` disables some *checks*, not the type system: you owe the compiler the documented contract.
+Inside `unsafe` blocks, `unsafe fn` bodies, and `unsafe impl`s; through raw pointers, FFI calls, `static mut`, `mem::transmute`, `MaybeUninit`, and `ManuallyDrop`; and - rarely but real - through unsound bugs in dependencies or the standard library. `unsafe` disables some *checks*, not the type system: you owe the compiler the documented contract.
 
 ```rust
 use std::mem::MaybeUninit;

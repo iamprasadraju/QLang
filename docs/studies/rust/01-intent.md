@@ -36,7 +36,7 @@ struct Node {
 
 ### Who is it designed for?
 
-Systems programmers first — Mozilla, then embedded, OS, networking, and cloud-infrastructure teams (AWS, Cloudflare, Meta, Microsoft) — plus application programmers who want the compiler to enforce safety. Rust was adopted as a second supported language of the Linux kernel (upstreamed 2022-2024) and is used throughout Android's userspace.
+Systems programmers first - Mozilla, then embedded, OS, networking, and cloud-infrastructure teams (AWS, Cloudflare, Meta, Microsoft) - plus application programmers who want the compiler to enforce safety. Rust was adopted as a second supported language of the Linux kernel (upstreamed 2022-2024) and is used throughout Android's userspace.
 
 ### What kinds of programs does it make natural?
 

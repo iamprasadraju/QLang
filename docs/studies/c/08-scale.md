@@ -8,7 +8,7 @@
 
 Into translation units: each `.c` file compiles independently into an object
 file, and the linker merges them into one program. There are no modules,
-packages, or namespaces in C11/C17 — separation of concerns is expressed as
+packages, or namespaces in C11/C17 - separation of concerns is expressed as
 file boundaries plus whatever your build system enforces.
 
 ### How are names shared?
@@ -38,7 +38,7 @@ linked
 Historically the second behavior was universal: tentative definitions were
 emitted as "common" symbols and merged silently. GCC 10 and Clang 11 changed
 the default to `-fno-common`, turning that silent merge into the link error
-above — a 40-year-old compatibility rule visible as a compiler flag.
+above - a 40-year-old compatibility rule visible as a compiler flag.
 
 ### How is visibility controlled?
 
@@ -81,7 +81,7 @@ void widget_destroy(struct widget *w);
 
 By header files: prototypes, public `typedef`s and `struct` layouts,
 `enum` constants, configuration macros, and comments stating the contract.
-The discipline that matters is keeping implementations out of headers — an
+The discipline that matters is keeping implementations out of headers - an
 opaque struct in the header and the definition in the `.c` file keeps the ABI
 stable when the implementation changes.
 
@@ -132,4 +132,4 @@ state `static` by default, prefer forward declarations to nested includes,
 expose opaque types instead of layouts, keep translation units small, and
 treat the header as a reviewed interface. Nothing in the language stops two
 libraries from colliding at link time or a header from pulling in half the
-program — the cost of scale is paid in house style and build tooling.
+program - the cost of scale is paid in house style and build tooling.

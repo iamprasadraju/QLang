@@ -8,7 +8,7 @@
 
 Scalars (integers, floating point, pointers, enums, `_Bool`), aggregates
 (arrays, structs, unions), and functions that can be called or have their
-address taken. Everything is ultimately a flat image of bytes in memory — there
+address taken. Everything is ultimately a flat image of bytes in memory - there
 are no objects, no closures, no algebraic data types, and no values that own
 other values.
 
@@ -73,7 +73,7 @@ is completely unrestricted and untracked.
 Arbitrary byte-level layouts: structs with implementation-defined padding and
 alignment (checkable with `_Static_assert` on `sizeof`/`_Alignof`), unions
 overlaying different interpretations, bit-fields for packed flags, exact-width
-integers for wire formats, arrays sized at run time (VLAs), and — from C23 —
+integers for wire formats, arrays sized at run time (VLAs), and - from C23 -
 `#embed` to splice a binary file straight into an initializer.
 
 ```c
@@ -97,7 +97,7 @@ their length, encoding, and ownership are all conventions too.
 
 A translation unit built from declarations (objects, functions, `typedef`s,
 tags, enumerators), statements (expression, compound, `if`, `switch`, loops,
-`goto`, `break`, `continue`, `return`), and expressions — plus a separate,
+`goto`, `break`, `continue`, `return`), and expressions - plus a separate,
 earlier layer of preprocessing directives (`#include`, `#define`, `#if`)
 recognized only while producing tokens.
 
@@ -153,7 +153,7 @@ unit, and if nothing else defines it, the compiler must still allocate it.
 For a hosted implementation: run startup, execute `main`, run `atexit`
 handlers, and produce exactly the observable behavior the standard prescribes.
 If the program contains undefined behavior, the standard assigns it no meaning
-— the question "what does this program do?" has no conforming answer.
+- the question "what does this program do?" has no conforming answer.
 
 ### Is meaning defined by evaluation, transformation, proof, relation, effects, or something else?
 
@@ -161,7 +161,7 @@ Operational effects over the abstract machine, constrained by a *sequenced
 before* relation between evaluations: semantics are stated as required behavior
 and observable output, not as a denotation, a rewriting rule, or a proof
 obligation. There is no formal semantics document and no static analysis
-requirement — only "diagnose these constraints, otherwise behave as
+requirement - only "diagnose these constraints, otherwise behave as
 specified".
 
 ## What does a name refer to?
@@ -169,7 +169,7 @@ specified".
 ### What can be named?
 
 Objects, functions, `typedef` names, `struct`/`union`/`enum` tags, members,
-enumerators, statement labels, and — in a separate, earlier phase — macros.
+enumerators, statement labels, and - in a separate, earlier phase - macros.
 Each category lives in one of four language namespaces, plus the preprocessor's
 own macro namespace.
 
@@ -192,7 +192,7 @@ preprocessing, before any C declaration exists.
 
 From its declaration to the end of the innermost enclosing scope; file-scope
 names are visible to the end of the translation unit. External linkage makes a
-name *linkable* from other translation units, but that is linkage, not scope —
+name *linkable* from other translation units, but that is linkage, not scope -
 you still must declare it there.
 
 ### How are names resolved?
@@ -211,7 +211,7 @@ promise that others do not alias it within a block.
 
 ### Can names be rebound?
 
-No — an identifier's binding is fixed by its declaration for its entire scope.
+No - an identifier's binding is fixed by its declaration for its entire scope.
 Only the object it denotes can be assigned a new value; there is no operation
 that makes an existing name mean something else, and no renaming.
 
@@ -219,7 +219,7 @@ that makes an existing name mean something else, and no renaming.
 
 Not by the language: a C function never closes over the environment where it
 was written. Capture is emulated with an explicit `void *` context parameter,
-with `static` state, or — in GCC only — with nested functions, an extension
+with `static` state, or - in GCC only - with nested functions, an extension
 that builds a trampoline on an executable stack.
 
 ```c
@@ -250,7 +250,7 @@ void f(void) {
 
 ### Are there multiple namespaces?
 
-Yes — four: ordinary identifiers (variables, functions, `typedef`s,
+Yes - four: ordinary identifiers (variables, functions, `typedef`s,
 enumerators), tags (`struct`/`union`/`enum`), members (one namespace per
 aggregate), and labels (one per function); the preprocessor adds a fifth
 non-language namespace for macros. This is why POSIX can have both

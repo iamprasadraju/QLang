@@ -10,7 +10,7 @@ Every expression's type, declarations and their scopes, linkage and storage
 duration, constant expressions (enumeration values, static array sizes,
 `_Static_assert` conditions), lvalue-ness, format-string/argument agreement
 under `-Wformat`, and all the constraint rules of the standard. What it cannot
-determine statically is any *fact about values* — only types.
+determine statically is any *fact about values* - only types.
 
 ### What must wait until runtime?
 
@@ -71,7 +71,7 @@ warn2.c:5:9: warning: unused variable 'unused' [-Wunused-variable]
 ```
 
 Notice the split: the undeclared call above is a hard error even without
-`-Wall`, while wrong types and wrong format specifiers are only *warnings* —
+`-Wall`, while wrong types and wrong format specifiers are only *warnings* -
 a build without `-Werror` will happily ship them.
 
 ### What relationships can be expressed in the type system?
@@ -138,8 +138,8 @@ API.
 ### Can properties be proved?
 
 Not by the language: no proof terms, no dependent types, no refinement or
-effect system. Assurance comes from outside — static analyzers (the Clang
-static analyzer, cppcheck, Coverity), sanitizers, and tests — none of which
+effect system. Assurance comes from outside - static analyzers (the Clang
+static analyzer, cppcheck, Coverity), sanitizers, and tests - none of which
 the standard mentions.
 
 ## What does the language guarantee?
@@ -149,7 +149,7 @@ the standard mentions.
 Few. The compile step is a legality filter: you cannot use an undeclared
 identifier, call a function without a prototype in scope (C99 and later), or
 initialize static storage with a non-constant expression. Almost everything
-that hurts — bounds, lifetimes, null, races — is not prevented at all.
+that hurts - bounds, lifetimes, null, races - is not prevented at all.
 
 ### What errors are detected?
 
@@ -161,7 +161,7 @@ you add tooling.
 ### What remains the programmer's responsibility?
 
 Memory safety, bounds, initialization, lifetimes, null checks, resource
-pairing, thread safety, overflow policy, and the algorithm's correctness — in
+pairing, thread safety, overflow policy, and the algorithm's correctness - in
 short, everything about whether the program is *right*. The standard only
 promises that a program without undefined behavior behaves as written.
 
@@ -207,8 +207,8 @@ normal build the same line is simply "whatever the compiler decided".
 
 ### What can the compiler prove?
 
-Type correctness of every expression, constantness where required, and — by
-assuming you never invoke undefined behavior — that certain branches are
+Type correctness of every expression, constantness where required, and - by
+assuming you never invoke undefined behavior - that certain branches are
 impossible. That last power lets it delete code that your program's logic
 relies on.
 
@@ -224,7 +224,7 @@ int no_overflow(int x) {
 Any program whose safety depends on a fact the type system cannot hold: an
 array whose length matches a parameter, a pointer that is non-null, a union
 whose active member matches its tag, or data used by two threads under an
-unwritten protocol. Those programs can be written, but never *checked* — and
+unwritten protocol. Those programs can be written, but never *checked* - and
 there is no way to mark a function "unsafe" because nothing is safe to begin
 with.
 
@@ -234,4 +234,4 @@ Everywhere, by design: casts (especially through `void *` and `char *`, which
 may inspect any object's bytes), unions, `memcpy` into typed storage, inline
 assembly, `restrict` promises you break, `const` you cast away, and the
 platform's FFI. The bypasses are not escape hatches from an otherwise safe
-language — they are the ordinary features.
+language - they are the ordinary features.

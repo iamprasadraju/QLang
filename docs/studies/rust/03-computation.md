@@ -83,7 +83,7 @@ Yes: `impl Iterator<Item = u8>` returns an opaque concrete type, `Box<dyn Error>
 
 ### Can behavior capture context?
 
-Closures capture enclosing names automatically — per variable and (since edition 2021) per place element — by `&`, `&mut`, or move, inferred from how the body uses them; `move` forces by-value capture, which is what `'static` thread spawns require.
+Closures capture enclosing names automatically - per variable and (since edition 2021) per place element - by `&`, `&mut`, or move, inferred from how the body uses them; `move` forces by-value capture, which is what `'static` thread spawns require.
 
 ```rust
 let threshold = 3;
@@ -114,7 +114,7 @@ Move the idea into a generic function or struct (type repetition), a trait (beha
 
 ### How can an idea be generalized?
 
-By stating a trait bound — `fn largest<T: Ord>(xs: &[T]) -> &T` — refined with `where` clauses, associated types for fixed relationships (`Iterator::Item`), supertraits for refinement, and blanket impls such as `impl<T: Display> ToString for T` for derived coverage.
+By stating a trait bound - `fn largest<T: Ord>(xs: &[T]) -> &T` - refined with `where` clauses, associated types for fixed relationships (`Iterator::Item`), supertraits for refinement, and blanket impls such as `impl<T: Display> ToString for T` for derived coverage.
 
 ```rust
 fn max_all<T: Ord>(xs: &[T]) -> Option<&T> {
@@ -126,7 +126,7 @@ println!("{:?}", max_all(&[3, 1, 4, 1, 5]));  // works for any Ord, monomorphize
 
 ### What can be parameterized?
 
-Types, lifetimes, const values (primitive integers, `bool`, `char`, and array lengths — the stable const-generic subset), associated types chosen by each impl, and opaque `impl Trait` parameters. Types indexed by arbitrary computed values or proofs (full dependent types) are out of scope.
+Types, lifetimes, const values (primitive integers, `bool`, `char`, and array lengths - the stable const-generic subset), associated types chosen by each impl, and opaque `impl Trait` parameters. Types indexed by arbitrary computed values or proofs (full dependent types) are out of scope.
 
 ```rust
 struct Grid<const ROWS: usize, const COLS: usize> {
@@ -142,7 +142,7 @@ Private fields and items (the default visibility is module-private), `pub(crate)
 
 ### What can be exposed?
 
-Anything reachable: `pub` items, public fields or their accessors, trait implementations, `pub use` re-exports that curate a public surface, and individually `pub` enum variants or struct fields. Visibility is hierarchical — `pub(in path)` narrows it, and an item can never be more visible than its parent module.
+Anything reachable: `pub` items, public fields or their accessors, trait implementations, `pub use` re-exports that curate a public surface, and individually `pub` enum variants or struct fields. Visibility is hierarchical - `pub(in path)` narrows it, and an item can never be more visible than its parent module.
 
 ### What can depend on another abstraction?
 

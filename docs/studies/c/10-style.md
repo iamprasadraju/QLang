@@ -40,15 +40,15 @@ done:
 }
 ```
 
-That `goto cleanup` shape — one label, resources released in reverse order,
-single exit value — is the C substitute for destructors and exceptions, and it
+That `goto cleanup` shape - one label, resources released in reverse order,
+single exit value - is the C substitute for destructors and exceptions, and it
 is the single most characteristic idiom in the language.
 
 ### What abstractions naturally emerge?
 
 Opaque handles with create/destroy pairs, tables of function pointers acting
 as interfaces or vtables, callback-plus-context APIs, tagged unions for
-domains with alternatives, and macro-generated boilerplate — each one
+domains with alternatives, and macro-generated boilerplate - each one
 hand-rolling what other languages provide as a keyword.
 
 ```c
@@ -75,5 +75,5 @@ Procedural, imperative, data-oriented thinking with an explicit mental model
 of memory: every value has an address and a lifetime, every call has a cost,
 every error must be checked, and every resource must be paired. The programmer
 is the type checker, the garbage collector, the ownership system, and the
-concurrency auditor — the style is "think first, the compiler will not save
+concurrency auditor - the style is "think first, the compiler will not save
 you".
